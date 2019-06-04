@@ -1,0 +1,21 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:innerRadius="0dp"
+    android:shape="oval"
+    android:thicknessRatio="2"
+    android:useLevel="false" >
+
+    <solid android:color="@android:color/transparent" />
+
+    <!--On Click not working
+    <item android:state_pressed="true">
+        <solid android:color="#ff1744" />
+    </item>
+    <item android:state_pressed="false">
+        <solid android:color="@android:color/white" />
+    </item>-->
+
+
+    <stroke
+        android:width="4dp"
+        android:color="#455A64" />
+</shape>

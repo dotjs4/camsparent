@@ -4,38 +4,98 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edmt.dev.androidcamera2api.MainActivity">
+    tools:context="edmt.dev.androidcamera2api.MainActivity"
+    android:background="#000"
+    >
 
- <TextureView
-     android:id="@+id/textureView"
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"
-     android:layout_above="@+id/btnCapture"
-     />
-
-    <ImageView
-        android:id="@+id/transparentImage"
+    <TextureView
+        android:id="@+id/textureView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha=".5"
+        android:layout_above="@+id/btnCapture"
         />
 
-    <Button
-        android:id="@+id/btnCapture"
-        android:layout_width="500px"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:text="CAPTURE" />
+    <!--IMAGE OVERLAY-->
+   <ImageView
+       android:id="@+id/transparentImage"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_alignBottom="@+id/btnCapture"
+       android:layout_marginBottom="-5dp"
+       android:alpha=".5"
+       />
 
-    <Button
-        android:id="@+id/btnSelectImage"
-        android:layout_width="500px"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+
+   <RelativeLayout
+       android:id="@+id/menuBG"
+       android:layout_width="match_parent"
+       android:layout_height="250px"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentLeft="true"
+       android:layout_marginBottom="-125px"
+       android:background="#455A64"
+       />
+
+   <Button
+       android:id="@+id/btnSelectImage"
+       android:layout_height="150px"
+       android:layout_width="150px"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentBottom="true"
+       android:layout_marginLeft="50dp"
+       android:layout_marginBottom="5dp"
+       android:background="@drawable/menu_button"
+       />
+
+    <ImageView
+        android:layout_width="150px"
+        android:layout_height="150px"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:text="SELECT" />
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="50dp"
+        android:src="@drawable/selectimage"
+        android:background="@null"
+        />
+
+   <Button
+        android:id="@+id/btnCapture"
+        android:layout_width="180px"
+        android:layout_height="180px"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/menu_button"
+        />
+
+   <ImageView
+        android:layout_width="180px"
+        android:layout_height="180px"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/captureimage_bw"
+        android:background="@null"
+        />
+
+
+   <Button
+       android:id="@+id/btnSettings"
+       android:layout_width="150px"
+       android:layout_height="150px"
+       android:layout_alignParentRight="true"
+       android:layout_alignParentBottom="true"
+       android:layout_marginRight="50dp"
+       android:layout_marginBottom="5dp"
+       android:background="@drawable/menu_button"
+       />
+
+ <ImageView
+     android:layout_width="150px"
+     android:layout_height="150px"
+     android:layout_alignParentRight="true"
+     android:layout_alignParentBottom="true"
+     android:layout_marginRight="50dp"
+     android:layout_marginBottom="5dp"
+     android:background="@drawable/settings"/>
 
 </RelativeLayout>
