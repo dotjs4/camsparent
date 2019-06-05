@@ -8,22 +8,20 @@
     android:background="#000"
     >
 
-    <TextureView
-        android:id="@+id/textureView"
+    <LinearLayout
+        android:id="@+id/cPreview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btnCapture"
-        />
+        android:orientation="horizontal">
 
-    <!--IMAGE OVERLAY-->
-   <ImageView
-       android:id="@+id/transparentImage"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:layout_alignBottom="@+id/btnCapture"
-       android:layout_marginBottom="-5dp"
-       android:alpha=".5"
-       />
+
+        <ImageView
+            android:id="@+id/transparentImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@android:color/transparent" />
+    </LinearLayout>
 
 
    <RelativeLayout
@@ -32,20 +30,21 @@
        android:layout_height="250px"
        android:layout_alignParentBottom="true"
        android:layout_alignParentLeft="true"
+       android:layout_alignParentRight="true"
        android:layout_marginBottom="-125px"
        android:background="#455A64"
        />
 
-   <Button
-       android:id="@+id/btnSelectImage"
-       android:layout_height="150px"
-       android:layout_width="150px"
-       android:layout_alignParentLeft="true"
-       android:layout_alignParentBottom="true"
-       android:layout_marginLeft="50dp"
-       android:layout_marginBottom="5dp"
-       android:background="@drawable/menu_button"
-       />
+    <Button
+        android:id="@+id/btnSelectImage"
+        android:layout_height="150px"
+        android:layout_width="150px"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/menu_button"
+        />
 
     <ImageView
         android:layout_width="150px"
@@ -57,7 +56,7 @@
         android:background="@null"
         />
 
-   <Button
+    <Button
         android:id="@+id/btnCapture"
         android:layout_width="180px"
         android:layout_height="180px"
@@ -67,35 +66,45 @@
         android:background="@drawable/menu_button"
         />
 
-   <ImageView
+    <ImageView
         android:layout_width="180px"
         android:layout_height="180px"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="5dp"
-        android:src="@drawable/captureimage_bw"
+        android:src="@drawable/captureimagebw"
         android:background="@null"
         />
 
 
-   <Button
-       android:id="@+id/btnSettings"
-       android:layout_width="150px"
-       android:layout_height="150px"
-       android:layout_alignParentRight="true"
-       android:layout_alignParentBottom="true"
-       android:layout_marginRight="50dp"
-       android:layout_marginBottom="5dp"
-       android:background="@drawable/menu_button"
-       />
+    <Button
+        android:id="@+id/btnSettings"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/menu_button" />
 
- <ImageView
-     android:layout_width="150px"
-     android:layout_height="150px"
-     android:layout_alignParentRight="true"
-     android:layout_alignParentBottom="true"
-     android:layout_marginRight="50dp"
-     android:layout_marginBottom="5dp"
-     android:background="@drawable/settings"/>
+    <ImageView
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/settings"
+        />
 
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center"
+        android:orientation="horizontal"
+        >
+
+    </LinearLayout>
 </RelativeLayout>
