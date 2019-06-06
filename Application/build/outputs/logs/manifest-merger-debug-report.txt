@@ -1,0 +1,104 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:2:1-27:12
+MERGED from [com.android.support:support-v13:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/c4478cb3e60a594fdf91dc9d065d96e8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/01937d900add0a82346d64b11b03cf1c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/506067e1447f7208e0d2f617e4e33ba8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/18f2c26f1869fcf04b26e4602dc5e65d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/3d4c43d20cb75b74217c5679a7ee6f09/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-media-compat:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/f212fa8a14a6d773d720d7e7a64761bf/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/d78465c45cfca6f2946d460d3c4c0288/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/7d5d08f02f55324c5e44338cb7b1c598/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/016a5ea3263646b69cfd7b5e0676eb31/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/3f28b919396c66dddac2d09f74dbb041/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/335359fddd2a962a3c00857617b58b2a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/58588288f3c747e8705ed41ae53fe2ea/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/61e0a6de0526bb7dd7cdb92c7776ea05/AndroidManifest.xml:17:1-24:12
+	package
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:3:5-47
+	xmlns:android
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.CAMERA
+ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:5:5-65
+	android:name
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:5:22-62
+uses-feature#android.hardware.camera
+ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:7:5-60
+	android:name
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:7:19-57
+uses-feature#android.hardware.camera.autofocus
+ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:8:5-70
+	android:name
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:8:19-67
+application
+ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:10:5-25:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/3d4c43d20cb75b74217c5679a7ee6f09/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/3d4c43d20cb75b74217c5679a7ee6f09/AndroidManifest.xml:9:5-20
+	android:label
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:13:9-41
+	android:icon
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:12:9-45
+	android:allowBackup
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:11:9-35
+	android:theme
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:14:9-45
+activity#com.example.android.camera2basic.CameraSettings
+ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:15:9-61
+	android:name
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:15:19-49
+activity#com.example.android.camera2basic.CameraActivity
+ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:16:9-24:20
+	android:label
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:18:13-45
+	android:name
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:17:13-43
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:19:13-23:29
+action#android.intent.action.MAIN
+ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:20:17-69
+	android:name
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:20:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:22:17-77
+	android:name
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml:22:27-74
+uses-sdk
+INJECTED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml
+INJECTED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml
+MERGED from [com.android.support:support-v13:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/c4478cb3e60a594fdf91dc9d065d96e8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v13:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/c4478cb3e60a594fdf91dc9d065d96e8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/01937d900add0a82346d64b11b03cf1c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/01937d900add0a82346d64b11b03cf1c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/506067e1447f7208e0d2f617e4e33ba8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/506067e1447f7208e0d2f617e4e33ba8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/18f2c26f1869fcf04b26e4602dc5e65d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/18f2c26f1869fcf04b26e4602dc5e65d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/3d4c43d20cb75b74217c5679a7ee6f09/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/3d4c43d20cb75b74217c5679a7ee6f09/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-media-compat:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/f212fa8a14a6d773d720d7e7a64761bf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/f212fa8a14a6d773d720d7e7a64761bf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/d78465c45cfca6f2946d460d3c4c0288/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/d78465c45cfca6f2946d460d3c4c0288/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/7d5d08f02f55324c5e44338cb7b1c598/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/7d5d08f02f55324c5e44338cb7b1c598/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/016a5ea3263646b69cfd7b5e0676eb31/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/016a5ea3263646b69cfd7b5e0676eb31/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/3f28b919396c66dddac2d09f74dbb041/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/3f28b919396c66dddac2d09f74dbb041/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/335359fddd2a962a3c00857617b58b2a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/335359fddd2a962a3c00857617b58b2a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/58588288f3c747e8705ed41ae53fe2ea/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.2] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/58588288f3c747e8705ed41ae53fe2ea/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/61e0a6de0526bb7dd7cdb92c7776ea05/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/samirahuber/.gradle/caches/transforms-2/files-2.1/61e0a6de0526bb7dd7cdb92c7776ea05/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml
+INJECTED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml
+		ADDED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/AndroidManifest.xml
