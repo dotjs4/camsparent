@@ -53,6 +53,7 @@ import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
@@ -70,6 +71,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
+
+import static java.lang.Thread.sleep;
 
 public class Camera2BasicFragment extends Fragment
         implements View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
@@ -426,8 +429,7 @@ public class Camera2BasicFragment extends Fragment
 
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
-        view.findViewById(R.id.picture).setOnClickListener(this);
-        view.findViewById(R.id.info).setOnClickListener(this);
+        view.findViewById(R.id.btnCapture).setOnClickListener(this);
         mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
     }
 
@@ -843,6 +845,11 @@ public class Camera2BasicFragment extends Fragment
 
             mCaptureSession.stopRepeating();
             mCaptureSession.abortCaptures();
+            try {
+                sleep(100);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             mCaptureSession.capture(captureBuilder.build(), CaptureCallback, null);
         } catch (CameraAccessException e) {
             e.printStackTrace();
@@ -887,7 +894,7 @@ public class Camera2BasicFragment extends Fragment
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.picture: {
+            case R.id.btnCapture: {
                 takePicture();
                 break;
             }
