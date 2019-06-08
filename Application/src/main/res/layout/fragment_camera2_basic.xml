@@ -35,6 +35,13 @@
         android:background="#455A64"
         />
 
+    <ImageView
+        android:id="@+id/imageOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        />
+
     <Button
         android:id="@+id/btnSelectImage"
         android:layout_height="55dp"

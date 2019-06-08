@@ -42,6 +42,7 @@ import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.Image;
 import android.media.ImageReader;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -60,8 +61,10 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.Console;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -87,6 +90,9 @@ public class Camera2BasicFragment extends Fragment
     private static final String FRAGMENT_DIALOG = "dialog";
 
     private static final int PICK_IMAGE = 100;
+    private static final int RESULT_OK = 0;
+    View myview;
+    Uri imageUri;
 
     static {
         ORIENTATIONS.append(Surface.ROTATION_0, 90);
@@ -433,6 +439,7 @@ public class Camera2BasicFragment extends Fragment
 
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
+        myview = view;
         view.findViewById(R.id.btnCapture).setOnClickListener(this);
         view.findViewById(R.id.btnSelectImage).setOnClickListener(this);
         view.findViewById(R.id.btnSettings).setOnClickListener(this);
@@ -913,6 +920,16 @@ public class Camera2BasicFragment extends Fragment
                 Intent i = new Intent(getActivity(), CameraSettings.class);
                 startActivity(i);
             }
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE) {
+            imageUri = data.getData();
+            ImageView imageView = myview.findViewById(R.id.imageOverlay);
+            imageView.setImageURI(imageUri);
         }
     }
 

@@ -1,4 +1,4 @@
-#Thu Jun 06 15:43:54 CEST 2019
+#Sat Jun 08 10:21:41 CEST 2019
 base.0=/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/transforms/dexMerger/debug/10
 path.0=classes.dex
 renamed.0=classes.dex
