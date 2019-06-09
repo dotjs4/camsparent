@@ -89,21 +89,21 @@ public final class R {
         public static final int forever = 0x7f070039;
         public static final int icon = 0x7f07003f;
         public static final int icon_group = 0x7f070040;
-        public static final int info = 0x7f070044;
-        public static final int italic = 0x7f070046;
-        public static final int line1 = 0x7f070048;
-        public static final int line3 = 0x7f070049;
-        public static final int normal = 0x7f070053;
-        public static final int notification_background = 0x7f070054;
-        public static final int notification_main_column = 0x7f070055;
-        public static final int notification_main_column_container = 0x7f070056;
-        public static final int right_icon = 0x7f07005f;
-        public static final int right_side = 0x7f070060;
-        public static final int tag_transition_group = 0x7f070081;
-        public static final int text = 0x7f070082;
-        public static final int text2 = 0x7f070083;
-        public static final int time = 0x7f070087;
-        public static final int title = 0x7f070088;
+        public static final int info = 0x7f070047;
+        public static final int italic = 0x7f070049;
+        public static final int line1 = 0x7f07004b;
+        public static final int line3 = 0x7f07004c;
+        public static final int normal = 0x7f070056;
+        public static final int notification_background = 0x7f070057;
+        public static final int notification_main_column = 0x7f070058;
+        public static final int notification_main_column_container = 0x7f070059;
+        public static final int right_icon = 0x7f070062;
+        public static final int right_side = 0x7f070063;
+        public static final int tag_transition_group = 0x7f070084;
+        public static final int text = 0x7f070085;
+        public static final int text2 = 0x7f070086;
+        public static final int time = 0x7f07008a;
+        public static final int title = 0x7f07008b;
     }
     public static final class integer {
         private integer() {}

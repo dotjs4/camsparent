@@ -722,6 +722,9 @@ id icon_group
 id ifRoom
 id image
 id imageOverlay
+id imgCap
+id imgSel
+id imgSet
 id info
 id invisible
 id italic
