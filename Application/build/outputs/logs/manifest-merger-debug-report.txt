@@ -1,104 +1,104 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:2:1-27:12
-MERGED from [com.android.support:support-v13:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/2a2a16f83ab91c081acce60584eb738b/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-v4:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/c917297c59f956b83ed14d69f55e1735/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:cardview-v7:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/d1558c1ee7ec74d743e3194359859723/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:appcompat-v7:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/c6cf8e286069a05face550da4fe22cfa/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/jakob/.gradle/caches/transforms-2/files-2.1/0e5a1389002690f61bc1724cc74d4192/AndroidManifest.xml:2:1-11:12
-MERGED from [com.android.support:support-media-compat:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/bb285fbf622a00923ef5e0ce446f2a59/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-fragment:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/c6db8d4c7c233b304ef559df81e07a2c/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/3b7566cff554031e0e558e9fb16cee3b/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/98a250a497b02d363ebc5fa5149ea25c/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/853546fb3f4fed8281de3d679ae96825/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/c953ad0ae0423ee8cfe44357ee622b7c/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/57e7595ad3df11bf5a9cdbbdede056c3/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.0.3] /home/jakob/.gradle/caches/transforms-2/files-2.1/165c6f019aa9f10033fc4945d9d4a814/AndroidManifest.xml:17:1-24:12
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-27:12
+MERGED from [com.android.support:support-v13:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\86fbbeb42d2727539046b5c647cae430\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\0d64e4fcf8bc905b4eea112c498a700b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\8a936c0d5925ad5b2b5da1b1952d4c67\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\c935817946e2dd0071519da3a31112b2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\2a4b72f7723d78ce36bccb53365578f1\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\b2ddb5f3ab389599394c5dd9d12c6ab5\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\c96866ddf409d7eda4bfbc67fb5d67cc\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\25bf37c6066658669ea7269685198268\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\39192126e614746eec9d7d85adcde660\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\df6613ca7bb057f71f21156e34b29039\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\82a7acab7d602a54ff86da23165ae530\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\187db4195a1af60b6f76f7ae79cf3b05\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\43075184483826259c71d0b37f2eed77\AndroidManifest.xml:17:1-24:12
 	package
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:3:5-47
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:3:5-47
 	xmlns:android
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.CAMERA
-ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:5:5-65
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:5:5-65
 	android:name
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:5:22-62
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:5:22-62
 uses-feature#android.hardware.camera
-ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:7:5-60
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:7:5-60
 	android:name
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:7:19-57
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:7:19-57
 uses-feature#android.hardware.camera.autofocus
-ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:8:5-70
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:8:5-70
 	android:name
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:8:19-67
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:8:19-67
 application
-ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:10:5-25:19
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/jakob/.gradle/caches/transforms-2/files-2.1/0e5a1389002690f61bc1724cc74d4192/AndroidManifest.xml:9:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/jakob/.gradle/caches/transforms-2/files-2.1/0e5a1389002690f61bc1724cc74d4192/AndroidManifest.xml:9:5-20
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:10:5-25:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\2a4b72f7723d78ce36bccb53365578f1\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\2a4b72f7723d78ce36bccb53365578f1\AndroidManifest.xml:9:5-20
 	android:label
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:13:9-41
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:13:9-41
 	android:icon
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:12:9-45
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:12:9-45
 	android:allowBackup
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:11:9-35
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:14:9-45
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:14:9-45
 activity#com.example.android.camera2basic.CameraSettings
-ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:15:9-61
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:15:9-61
 	android:name
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:15:19-49
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:15:19-49
 activity#com.example.android.camera2basic.CameraActivity
-ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:16:9-24:20
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:16:9-24:20
 	android:label
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:18:13-45
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:18:13-45
 	android:name
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:17:13-43
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:17:13-43
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:19:13-23:29
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:19:13-23:29
 action#android.intent.action.MAIN
-ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:20:17-69
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:20:17-69
 	android:name
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:20:25-66
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:20:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:22:17-77
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:22:17-77
 	android:name
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml:22:27-74
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:22:27-74
 uses-sdk
-INJECTED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml
-INJECTED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml
-MERGED from [com.android.support:support-v13:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/2a2a16f83ab91c081acce60584eb738b/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v13:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/2a2a16f83ab91c081acce60584eb738b/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/c917297c59f956b83ed14d69f55e1735/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/c917297c59f956b83ed14d69f55e1735/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/d1558c1ee7ec74d743e3194359859723/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/d1558c1ee7ec74d743e3194359859723/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/c6cf8e286069a05face550da4fe22cfa/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/c6cf8e286069a05face550da4fe22cfa/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/jakob/.gradle/caches/transforms-2/files-2.1/0e5a1389002690f61bc1724cc74d4192/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/jakob/.gradle/caches/transforms-2/files-2.1/0e5a1389002690f61bc1724cc74d4192/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:support-media-compat:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/bb285fbf622a00923ef5e0ce446f2a59/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/bb285fbf622a00923ef5e0ce446f2a59/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/c6db8d4c7c233b304ef559df81e07a2c/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/c6db8d4c7c233b304ef559df81e07a2c/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/3b7566cff554031e0e558e9fb16cee3b/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/3b7566cff554031e0e558e9fb16cee3b/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/98a250a497b02d363ebc5fa5149ea25c/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/98a250a497b02d363ebc5fa5149ea25c/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/853546fb3f4fed8281de3d679ae96825/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/853546fb3f4fed8281de3d679ae96825/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/c953ad0ae0423ee8cfe44357ee622b7c/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/c953ad0ae0423ee8cfe44357ee622b7c/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/57e7595ad3df11bf5a9cdbbdede056c3/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.0.2] /home/jakob/.gradle/caches/transforms-2/files-2.1/57e7595ad3df11bf5a9cdbbdede056c3/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.0.3] /home/jakob/.gradle/caches/transforms-2/files-2.1/165c6f019aa9f10033fc4945d9d4a814/AndroidManifest.xml:20:5-22:41
-MERGED from [android.arch.lifecycle:runtime:1.0.3] /home/jakob/.gradle/caches/transforms-2/files-2.1/165c6f019aa9f10033fc4945d9d4a814/AndroidManifest.xml:20:5-22:41
-INJECTED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml
-INJECTED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml
+INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml
+MERGED from [com.android.support:support-v13:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\86fbbeb42d2727539046b5c647cae430\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v13:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\86fbbeb42d2727539046b5c647cae430\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\0d64e4fcf8bc905b4eea112c498a700b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\0d64e4fcf8bc905b4eea112c498a700b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\8a936c0d5925ad5b2b5da1b1952d4c67\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\8a936c0d5925ad5b2b5da1b1952d4c67\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\c935817946e2dd0071519da3a31112b2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\c935817946e2dd0071519da3a31112b2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\2a4b72f7723d78ce36bccb53365578f1\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\2a4b72f7723d78ce36bccb53365578f1\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\b2ddb5f3ab389599394c5dd9d12c6ab5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\b2ddb5f3ab389599394c5dd9d12c6ab5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\c96866ddf409d7eda4bfbc67fb5d67cc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\c96866ddf409d7eda4bfbc67fb5d67cc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\25bf37c6066658669ea7269685198268\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\25bf37c6066658669ea7269685198268\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\39192126e614746eec9d7d85adcde660\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\39192126e614746eec9d7d85adcde660\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\df6613ca7bb057f71f21156e34b29039\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\df6613ca7bb057f71f21156e34b29039\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\82a7acab7d602a54ff86da23165ae530\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\82a7acab7d602a54ff86da23165ae530\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\187db4195a1af60b6f76f7ae79cf3b05\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.2] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\187db4195a1af60b6f76f7ae79cf3b05\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\43075184483826259c71d0b37f2eed77\AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\43075184483826259c71d0b37f2eed77\AndroidManifest.xml:20:5-22:41
+INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml
-		INJECTED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml
-		ADDED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml
-		INJECTED from /home/jakob/camsparent/Application/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml

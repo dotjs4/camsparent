@@ -48,12 +48,22 @@ public class CameraActivity extends AppCompatActivity {
                 SensorManager.SENSOR_DELAY_NORMAL) {
             boolean isHorizontal = false;
             boolean animStarted = false;
+            boolean isUpsideDown = false;
             @Override
             public void onOrientationChanged(int orientation) {
-                if (orientation >= 240 && orientation <= 300) {
-                    Toast.makeText(getApplication(), "" + findViewById(R.id.imgSel).getRotation(), Toast.LENGTH_SHORT).show();
+                if ((orientation >= 240 && orientation <= 300) || (orientation >= 60 && orientation <= 120)) {
+                    //Toast.makeText(getApplication(), "" + findViewById(R.id.imgSel).getRotation(), Toast.LENGTH_SHORT).show();
                     if (!isHorizontal && !animStarted) {
-                        RotateAnimation rotateAnimation = new RotateAnimation(0, 90, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                        RotateAnimation rotateAnimation, rotateAnimation2;
+                        if (orientation >= 60 && orientation <= 120) {
+                            rotateAnimation = new RotateAnimation(0, -90, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                            rotateAnimation2 = new RotateAnimation(0, -90, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                            isUpsideDown = true;
+                        } else {
+                            rotateAnimation = new RotateAnimation(0, 90, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                            rotateAnimation2 = new RotateAnimation(0, 90, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                            isUpsideDown = false;
+                        }
                         rotateAnimation.setDuration(500);
                         rotateAnimation.setFillAfter(true);
                         rotateAnimation.setAnimationListener(new Animation.AnimationListener() {
@@ -73,7 +83,7 @@ public class CameraActivity extends AppCompatActivity {
 
                              }
                             });
-                            RotateAnimation rotateAnimation2 = new RotateAnimation(0, 90, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+
                             rotateAnimation2.setDuration(500);
                             rotateAnimation2.setFillAfter(true);
                             findViewById(R.id.imgSel).startAnimation(rotateAnimation);
@@ -81,9 +91,18 @@ public class CameraActivity extends AppCompatActivity {
                             findViewById(R.id.imgSet).startAnimation(rotateAnimation);
                     }
                 } else if (orientation < 240 || orientation > 300) {
-                    Toast.makeText(getApplication(), "" + findViewById(R.id.imgSel).getRotation(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplication(), "" + findViewById(R.id.imgSel).getRotation(), Toast.LENGTH_SHORT).show();
                     if (isHorizontal && !animStarted) {
-                        RotateAnimation rotateAnimation = new RotateAnimation(90, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                        RotateAnimation rotateAnimation, rotateAnimation2;
+
+                        if (isUpsideDown) {
+                            rotateAnimation = new RotateAnimation(-90, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                            rotateAnimation2 = new RotateAnimation(-90, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                        } else {
+                            rotateAnimation = new RotateAnimation(90, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                            rotateAnimation2 = new RotateAnimation(90, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                        }
+
                         rotateAnimation.setDuration(500);
                         rotateAnimation.setFillAfter(true);
                         rotateAnimation.setAnimationListener(new Animation.AnimationListener() {
@@ -103,7 +122,7 @@ public class CameraActivity extends AppCompatActivity {
 
                             }
                         });
-                        RotateAnimation rotateAnimation2 = new RotateAnimation(90, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+
                         rotateAnimation2.setDuration(500);
                         rotateAnimation2.setFillAfter(true);
                         findViewById(R.id.imgSel).startAnimation(rotateAnimation);
