@@ -476,8 +476,8 @@ public class Camera2BasicFragment extends Fragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mFile = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/", "/Camsparent/image" + System.currentTimeMillis() + ".jpg");
-        File mfolder = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/", "Camsparent");
+        mFile = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/", "/Camera/Camsparent/image" + System.currentTimeMillis() + ".jpg");
+        File mfolder = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/Camera/", "Camsparent");
 
         if (!mfolder.exists()) {
             mfolder.mkdir();
@@ -857,7 +857,7 @@ public class Camera2BasicFragment extends Fragment
      */
     private void captureStillPicture() {
         try {
-            mFile = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/", "/Camsparent/image" + System.currentTimeMillis() + ".jpg");
+            mFile = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/", "/Camera/Camsparent/image" + System.currentTimeMillis() + ".jpg");
             final Activity activity = getActivity();
             if (null == activity || null == mCameraDevice) {
                 return;
