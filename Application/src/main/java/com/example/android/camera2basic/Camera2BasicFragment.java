@@ -44,6 +44,7 @@ import android.media.Image;
 import android.media.ImageReader;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.provider.MediaStore;
@@ -449,7 +450,13 @@ public class Camera2BasicFragment extends Fragment
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mFile = new File(getActivity().getExternalFilesDir(null), "pic.jpg");
+
+        mFile = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/", "/Camsparent/image" + System.currentTimeMillis() + ".jpg");
+        File mfolder = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/", "Camsparent");
+
+        if (!mfolder.exists()) {
+            mfolder.mkdir();
+        }
     }
 
     @Override
@@ -825,6 +832,7 @@ public class Camera2BasicFragment extends Fragment
      */
     private void captureStillPicture() {
         try {
+            mFile = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/", "/Camsparent/image" + System.currentTimeMillis() + ".jpg");
             final Activity activity = getActivity();
             if (null == activity || null == mCameraDevice) {
                 return;
