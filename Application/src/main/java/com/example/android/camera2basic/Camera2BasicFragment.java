@@ -63,6 +63,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import java.io.Console;
@@ -444,8 +445,32 @@ public class Camera2BasicFragment extends Fragment
         view.findViewById(R.id.btnCapture).setOnClickListener(this);
         view.findViewById(R.id.btnSelectImage).setOnClickListener(this);
         view.findViewById(R.id.btnSettings).setOnClickListener(this);
+        SeekBar seekBar = view.findViewById(R.id.seekBar);
+        seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
         mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
     }
+
+    SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            ImageView imageView = myview.findViewById(R.id.imageOverlay);
+            if (imageView != null) {
+                imageView.setImageAlpha(progress*255/100);
+            }
+            else {
+                Log.e("test", "falsch");
+            }
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+        }
+    };
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
