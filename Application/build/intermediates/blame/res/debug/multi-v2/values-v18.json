@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/jakob/Schreibtisch/Projekt/camsparent/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v18/values-v18.xml",
+            "outputFile": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v18/values-v18.xml",
             "map": [
                 {
-                    "source": "/home/jakob/.gradle/caches/transforms-2/files-2.1/c6cf8e286069a05face550da4fe22cfa/res/values-v18/values-v18.xml",
+                    "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/18f2c26f1869fcf04b26e4602dc5e65d/res/values-v18/values-v18.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
