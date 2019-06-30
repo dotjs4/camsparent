@@ -25,11 +25,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.SurfaceTexture;
+import android.graphics.drawable.BitmapDrawable;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCharacteristics;
@@ -963,6 +965,20 @@ public class Camera2BasicFragment extends Fragment
             imageUri = data.getData();
             ImageView imageView = myview.findViewById(R.id.imageOverlay);
             imageView.setImageURI(imageUri);
+            BitmapDrawable bitmapDrawable = ((BitmapDrawable) imageView.getDrawable());
+            Bitmap original = bitmapDrawable.getBitmap();
+
+            Matrix matrix = new Matrix();
+
+            if (original.getWidth() > original.getHeight())
+                matrix.postRotate(90);
+
+            Bitmap myFinalImg = Bitmap.createBitmap(original, 0, 0, original.getWidth(), original.getHeight(), matrix, true);
+
+            // Set the Image in ImageView after decoding the String
+            imageView.setImageBitmap(myFinalImg);
+            imageView.setTranslationY(-125);
+
         }
     }
 
