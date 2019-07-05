@@ -33,7 +33,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="-125px"
-        android:background="#455A64"
+        android:background="@color/menuColor"
         />
 
     <ImageView

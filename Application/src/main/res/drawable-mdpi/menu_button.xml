@@ -17,5 +17,5 @@
 
     <stroke
         android:width="4dp"
-        android:color="#455A64" />
+        android:color="@color/menuColor" />
 </shape>

@@ -1764,7 +1764,7 @@
         <item name="android:textAppearance">?android:textAppearanceLarge</item>
         <item name="android:lineSpacingMultiplier">1.2</item>
         <item name="android:shadowDy">-6.5</item>
-    </style></file><file path="/Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/res/values/colors.xml" qualifiers=""><color name="control_background">#cc4285f4</color></file><file path="/Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/res/values/base-strings.xml" qualifiers=""><string name="app_name">Camera2Basic</string><string name="intro_message">
+    </style></file><file path="/Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/res/values/colors.xml" qualifiers=""><color name="control_background">#cc4285f4</color></file><file path="/Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/res/values/base-strings.xml" qualifiers=""><string name="app_name">Camsparent</string><string name="intro_message">
         <![CDATA[
         
             

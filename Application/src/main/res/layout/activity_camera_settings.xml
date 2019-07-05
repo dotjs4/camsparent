@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CameraSettings"
-    android:background="#000">
+    android:background="#fff">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,27 +18,11 @@
             android:layout_height="match_parent"
             android:titleTextColor="#fff"
             android:title="SETTINGS"
-            android:background="#455A64"
+            android:background="@color/menuColor"
             >
         </Toolbar>
 
     </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="80dp"
-        android:layout_height="50dp"
-        android:background="@drawable/rounded_field"
-        />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_height="50dp"
-        android:layout_marginTop="150dp"
-        android:background="@drawable/rounded_field"
-        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,19 +31,7 @@
         android:layout_marginTop="85dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="30dp"
-        android:orientation="horizontal">
-
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_height="wrap_content"
-            android:text="Lightning"/>
-
-    </LinearLayout>
+        android:orientation="horizontal"/>
 
 
     <LinearLayout android:layout_width="fill_parent"
@@ -72,7 +44,7 @@
         <Button android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#455A64"
+            android:background="@color/menuColor"
             android:textSize="20dp"
             android:textColor="#fff"
             android:text="SAVE"/>
@@ -82,12 +54,112 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#fff"
+            android:background="#666"
             android:textSize="20dp"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:text="BACK"/>
     </LinearLayout>
 
+    <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal">
+
+        <TextView android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:text="FLASH"/>
+
+        <Switch
+            android:id="@+id/flashSwitch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal">
+
+        <TextView android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:text="SOUND"/>
+
+        <Switch
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="300dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:text="RATIO"/>
+
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="50dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/ratio43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3:4"
+                />
+
+            <Button
+                android:id="@+id/ratio169"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="16:9"
+                />
+            <Button
+                android:id="@+id/ratioImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="fitted"
+                />
+        </RadioGroup>
+
+    </LinearLayout>
 
 
 </RelativeLayout>

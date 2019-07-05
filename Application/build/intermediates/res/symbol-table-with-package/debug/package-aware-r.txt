@@ -711,6 +711,7 @@ id end
 id end_padder
 id expand_activities_button
 id expanded_menu
+id flashSwitch
 id forever
 id goBackToCamera
 id gone
@@ -751,6 +752,9 @@ id percent
 id progress_circular
 id progress_horizontal
 id radio
+id ratio169
+id ratio43
+id ratioImage
 id right
 id right_icon
 id right_side
