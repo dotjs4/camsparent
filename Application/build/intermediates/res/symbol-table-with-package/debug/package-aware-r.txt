@@ -403,6 +403,7 @@ color material_grey_600
 color material_grey_800
 color material_grey_850
 color material_grey_900
+color menuColor
 color notification_action_color_filter
 color notification_icon_bg_color
 color notification_material_background_media_default_color
@@ -758,6 +759,7 @@ id ratioImage
 id right
 id right_icon
 id right_side
+id saveButton
 id screen
 id scrollIndicatorDown
 id scrollIndicatorUp
@@ -778,6 +780,7 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id soundSwitch
 id spacer
 id split_action_bar
 id spread

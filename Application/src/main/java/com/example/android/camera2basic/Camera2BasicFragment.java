@@ -42,9 +42,13 @@ import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.CaptureResult;
 import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
+import android.media.AudioManager;
 import android.media.Image;
 import android.media.ImageReader;
+import android.media.MediaActionSound;
+import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -55,6 +59,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
@@ -94,6 +99,7 @@ public class Camera2BasicFragment extends Fragment
     private static final String FRAGMENT_DIALOG = "dialog";
 
     private static final int PICK_IMAGE = 100;
+    private static final int OPEN_OPTIONS = 101;
     private static final int RESULT_OK = 0;
     View myview;
     Uri imageUri;
@@ -401,6 +407,11 @@ public class Camera2BasicFragment extends Fragment
     private static Size chooseOptimalSize(Size[] choices, int textureViewWidth,
             int textureViewHeight, int maxWidth, int maxHeight, Size aspectRatio) {
 
+
+        /*for (int i = 0; i < choices.length; i++) {
+            Log.d("TAGGA", String.valueOf(choices[i]));
+        }*/
+
         // Collect the supported resolutions that are at least as big as the preview Surface
         List<Size> bigEnough = new ArrayList<>();
         // Collect the supported resolutions that are smaller than the preview Surface
@@ -618,6 +629,7 @@ public class Camera2BasicFragment extends Fragment
                         rotatedPreviewWidth, rotatedPreviewHeight, maxPreviewWidth,
                         maxPreviewHeight, largest);
 
+                //Log.d("TAGGA1", String.valueOf(mPreviewSize));
                 // We fit the aspect ratio of TextureView to the size of preview we picked.
                 int orientation = getResources().getConfiguration().orientation;
                 if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -627,6 +639,17 @@ public class Camera2BasicFragment extends Fragment
                     mTextureView.setAspectRatio(
                             mPreviewSize.getHeight(), mPreviewSize.getWidth());
                 }
+
+                DisplayMetrics displayMetrics = new DisplayMetrics();
+                getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+                int h = displayMetrics.heightPixels;
+                int w = displayMetrics.widthPixels;
+
+                double ratio = (double) mPreviewSize.getWidth() / (double) mPreviewSize.getHeight();
+                double val = (double) w * ratio;
+
+                getActivity().findViewById(R.id.seekBar).setY((float) ((h / 2 - val / 2 - 125)) / 2 - 20);
+
 
                 // Check if the flash is supported.
                 Boolean available = characteristics.get(CameraCharacteristics.FLASH_INFO_AVAILABLE);
@@ -755,6 +778,8 @@ public class Camera2BasicFragment extends Fragment
                                 mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE,
                                         CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
                                 // Flash is automatically enabled when necessary.
+
+
                                 setAutoFlash(mPreviewRequestBuilder);
 
                                 // Finally, we start displaying the camera preview.
@@ -898,7 +923,17 @@ public class Camera2BasicFragment extends Fragment
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+
+
             mCaptureSession.capture(captureBuilder.build(), CaptureCallback, null);
+
+
+            if (getActivity().getSharedPreferences("name", Context.MODE_PRIVATE).getBoolean("sound", false)) {
+                MediaActionSound mediaActionSound = new MediaActionSound();
+                mediaActionSound.play(MediaActionSound.SHUTTER_CLICK);
+            }
+
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
@@ -953,7 +988,9 @@ public class Camera2BasicFragment extends Fragment
             }
             case R.id.btnSettings: {
                 Intent i = new Intent(getActivity(), CameraSettings.class);
-                startActivity(i);
+                //startActivity(i);
+                startActivityForResult(i, OPEN_OPTIONS);
+
             }
         }
     }
@@ -979,13 +1016,25 @@ public class Camera2BasicFragment extends Fragment
             imageView.setImageBitmap(myFinalImg);
             imageView.setTranslationY(-125);
 
-        }
+        } /*else if (requestCode == OPEN_OPTIONS) {
+            //Log.d("TAG", String.valueOf(getActivity().getSharedPreferences("name", Context.MODE_PRIVATE).getBoolean("flash", false)));
+        }*/
     }
 
     private void setAutoFlash(CaptureRequest.Builder requestBuilder) {
         if (mFlashSupported) {
-            requestBuilder.set(CaptureRequest.CONTROL_AE_MODE,
-                    CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
+            //requestBuilder.set(CaptureRequest.CONTROL_AE_MODE,
+                    //CaptureRequest.CONTROL_AE_MODE_ON_ALWAYS_FLASH);
+            if (getActivity().getSharedPreferences("name", Context.MODE_PRIVATE).getBoolean("flash", false)) {
+                //mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_ALWAYS_FLASH);
+                Log.d("TAG", "Flash on");
+                mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CameraMetadata.CONTROL_AE_MODE_ON_ALWAYS_FLASH);
+                mPreviewRequestBuilder.set(CaptureRequest.FLASH_MODE, CameraMetadata.FLASH_MODE_SINGLE);
+            } else {
+                Log.d("TAG", "Flash off");
+                mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CameraMetadata.CONTROL_AE_MODE_ON);
+                mPreviewRequestBuilder.set(CaptureRequest.FLASH_MODE, CameraMetadata.FLASH_MODE_OFF);
+            }
         }
     }
 

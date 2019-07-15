@@ -109,19 +109,12 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/settings" />
 
-    <LinearLayout
+    <SeekBar
+        android:id="@+id/seekBar"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:gravity="top|center"
-        >
-
-        <SeekBar
-            android:id="@+id/seekBar"
-            android:max="100"
-            android:progress="50"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+        android:layout_height="20dp"
+        android:max="100"
+        android:progress="50" />
 
     <LinearLayout
         android:layout_width="match_parent"
