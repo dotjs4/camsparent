@@ -983,6 +983,7 @@ public class Camera2BasicFragment extends Fragment
             }
             case R.id.btnSelectImage: {
                 Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                gallery.setType("image/*");
                 startActivityForResult(gallery, PICK_IMAGE);
                 break;
             }
@@ -999,6 +1000,9 @@ public class Camera2BasicFragment extends Fragment
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE) {
+
+            if (data == null || data.getData() == null) return;
+
             imageUri = data.getData();
             ImageView imageView = myview.findViewById(R.id.imageOverlay);
             imageView.setImageURI(imageUri);
