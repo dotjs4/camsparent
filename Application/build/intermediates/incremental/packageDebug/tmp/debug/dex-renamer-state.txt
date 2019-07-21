@@ -1,4 +1,4 @@
-#Sun Jul 21 12:04:50 CEST 2019
+#Sun Jul 21 12:43:28 CEST 2019
 base.0=C\:\\Users\\Jakob\\Desktop\\Projekt\\camsparent\\Application\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out
 path.1=classes.dex
 renamed.1=classes2.dex

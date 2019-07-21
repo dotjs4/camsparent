@@ -1006,6 +1006,7 @@ public class Camera2BasicFragment extends Fragment
             imageUri = data.getData();
             ImageView imageView = myview.findViewById(R.id.imageOverlay);
             imageView.setImageURI(imageUri);
+            imageView.setImageAlpha(127);
             BitmapDrawable bitmapDrawable = ((BitmapDrawable) imageView.getDrawable());
             Bitmap original = bitmapDrawable.getBitmap();
 
