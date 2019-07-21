@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Jakob\\Desktop\\Projekt\\camsparent\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
+            "outputFile": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Jakob\\.gradle\\caches\\transforms-2\\files-2.1\\187db4195a1af60b6f76f7ae79cf3b05\\res\\values-v21\\values-v21.xml",
+                    "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/58588288f3c747e8705ed41ae53fe2ea/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -23,26 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Jakob\\.gradle\\caches\\transforms-2\\files-2.1\\b2ddb5f3ab389599394c5dd9d12c6ab5\\res\\values-v21\\values-v21.xml",
-                    "from": {
-                        "startLines": "2,5,8,11",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,223,386,554",
-                        "endLines": "4,7,10,13",
-                        "endColumns": "12,12,12,12",
-                        "endOffsets": "218,381,549,716"
-                    },
-                    "to": {
-                        "startLines": "265,268,272,276",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "19507,19675,19964,20260",
-                        "endLines": "267,270,274,278",
-                        "endColumns": "12,12,12,12",
-                        "endOffsets": "19670,19833,20127,20422"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Jakob\\.gradle\\caches\\transforms-2\\files-2.1\\c935817946e2dd0071519da3a31112b2\\res\\values-v21\\values-v21.xml",
+                    "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/18f2c26f1869fcf04b26e4602dc5e65d/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,17,19,20,21,22,24,26,27,28,29,30,32,34,36,38,40,42,43,48,50,52,53,54,56,58,59,60,61,62,63,107,110,154,157,160,162,164,166,169,171,174,175,176,179,180,181,182,183,184,187,188,190,192,194,196,200,202,203,204,205,207,211,213,215,216,217,218,219,221,222,223,233,234,235,247",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -61,14 +42,14 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Jakob\\Desktop\\Projekt\\camsparent\\Application\\src\\main\\res\\values-v21\\base-template-styles.xml",
+                    "source": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/res/values-v21/base-template-styles.xml",
                     "from": {
                         "startLines": "20",
                         "startColumns": "4",
-                        "startOffsets": "697",
+                        "startOffsets": "677",
                         "endLines": "21",
                         "endColumns": "12",
-                        "endOffsets": "774"
+                        "endOffsets": "753"
                     },
                     "to": {
                         "startLines": "279",
@@ -77,6 +58,25 @@
                         "endLines": "280",
                         "endColumns": "12",
                         "endOffsets": "20503"
+                    }
+                },
+                {
+                    "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/f212fa8a14a6d773d720d7e7a64761bf/res/values-v21/values-v21.xml",
+                    "from": {
+                        "startLines": "2,5,8,11",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,223,386,554",
+                        "endLines": "4,7,10,13",
+                        "endColumns": "12,12,12,12",
+                        "endOffsets": "218,381,549,716"
+                    },
+                    "to": {
+                        "startLines": "265,268,272,276",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "19507,19675,19964,20260",
+                        "endLines": "267,270,274,278",
+                        "endColumns": "12,12,12,12",
+                        "endOffsets": "19670,19833,20127,20422"
                     }
                 }
             ]

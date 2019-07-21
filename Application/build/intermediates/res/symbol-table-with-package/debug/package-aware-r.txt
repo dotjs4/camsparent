@@ -636,6 +636,8 @@ drawable abc_vector_test
 drawable captureimagebw
 drawable ic_action_info
 drawable ic_launcher
+drawable logo_2
+drawable logo_3
 drawable menu_button
 drawable notification_action_background
 drawable notification_bg
