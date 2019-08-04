@@ -761,7 +761,9 @@ id icon
 id icon_group
 id ifRoom
 id image
+id imageOne
 id imageOverlay
+id imageTwo
 id imgCap
 id imgSel
 id imgSet
@@ -784,6 +786,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id openEditor
 id packed
 id parent
 id parentPanel
@@ -791,9 +794,6 @@ id percent
 id progress_circular
 id progress_horizontal
 id radio
-id ratio169
-id ratio43
-id ratioImage
 id right
 id right_icon
 id right_side
@@ -887,6 +887,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_camera
 layout activity_camera_settings
+layout edit_images
 layout fragment_camera2_basic
 layout notification_action
 layout notification_action_tombstone

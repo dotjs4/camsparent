@@ -70,13 +70,14 @@ public class CameraSettings extends AppCompatActivity {
                goBack();
            }
         });
-
+/*
         findViewById(R.id.ratio43).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 buttonClick(R.id.ratio43);
             }
         });
+
         findViewById(R.id.ratio169).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,11 +90,12 @@ public class CameraSettings extends AppCompatActivity {
                 buttonClick(R.id.ratioImage);
             }
         });
+*/
         //Log.d("TAGGA", String.valueOf(sharedPref.getBoolean("flash", false)));
         ((Switch) findViewById(R.id.soundSwitch)).setChecked(sharedPref.getBoolean("sound", false));
         ((Switch) findViewById(R.id.flashSwitch)).setChecked(sharedPref.getBoolean("flash", false));
     }
-
+/*
     private void buttonClick(int view) {
         switch(view) {
             case R.id.ratio43:
@@ -107,7 +109,7 @@ public class CameraSettings extends AppCompatActivity {
                 break;
         }
     }
-
+*/
 
 
     private void goBack() {

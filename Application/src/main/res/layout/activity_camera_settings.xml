@@ -112,6 +112,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
 
+
     </LinearLayout>
 
     <RelativeLayout
@@ -140,7 +141,7 @@
             android:textColor="#000"
             android:textSize="20dp" />
 
-
+        <!--
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -150,42 +151,45 @@
             android:layout_marginRight="0dp"
             android:foregroundGravity="clip_vertical|right"
             android:gravity="right|end"
-            android:orientation="horizontal"
+            android:orientation="horizl"
             android:weightSum="3">
 
-            <Button
-                android:id="@+id/ratio169"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="16:9" />
+                    <Button
+                        android:id="@+id/ratio169"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:text="16:9" />
 
-            <Button
-                android:id="@+id/ratioImage"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="fitted" />
+                    <Button
+                        android:id="@+id/ratioImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:text="fitted" />
 
-            <Button
-                android:id="@+id/ratio43"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="3:4" />
+                    <Button
+                        android:id="@+id/ratio43"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3:4" />
         </RadioGroup>
 
-
+    -->
 
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="200dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/logo_3"
             />
+
+
 
     </RelativeLayout>
 

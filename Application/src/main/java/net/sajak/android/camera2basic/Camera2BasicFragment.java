@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.Point;
@@ -70,6 +71,8 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -453,6 +456,7 @@ public class Camera2BasicFragment extends Fragment
         view.findViewById(R.id.btnCapture).setOnClickListener(this);
         view.findViewById(R.id.btnSelectImage).setOnClickListener(this);
         view.findViewById(R.id.btnSettings).setOnClickListener(this);
+        view.findViewById(R.id.openEditor).setOnClickListener(this);
         SeekBar seekBar = view.findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
         mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
@@ -873,6 +877,7 @@ public class Camera2BasicFragment extends Fragment
         }
     }
 
+
     /**
      * Capture a still picture. This method should be called when we get a response in
      * {@link #mCaptureCallback} from both {@link #lockFocus()}.
@@ -880,6 +885,7 @@ public class Camera2BasicFragment extends Fragment
     private void captureStillPicture() {
         try {
             mFile = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/", "/Camera/Camsparent/image" + System.currentTimeMillis() + ".jpg");
+
             final Activity activity = getActivity();
             if (null == activity || null == mCameraDevice) {
                 return;
@@ -984,9 +990,11 @@ public class Camera2BasicFragment extends Fragment
             }
             case R.id.btnSettings: {
                 Intent i = new Intent(getActivity(), CameraSettings.class);
-                //startActivity(i);
                 startActivityForResult(i, OPEN_OPTIONS);
-
+            }
+            case R.id.openEditor: {
+                Intent i = new Intent(getActivity(), ImageEditor.class);
+                startActivityForResult(i, OPEN_OPTIONS);
             }
         }
     }
@@ -1060,6 +1068,7 @@ public class Camera2BasicFragment extends Fragment
         @Override
         public void run() {
             ByteBuffer buffer = mImage.getPlanes()[0].getBuffer();
+
             byte[] bytes = new byte[buffer.remaining()];
             buffer.get(bytes);
             FileOutputStream output = null;
