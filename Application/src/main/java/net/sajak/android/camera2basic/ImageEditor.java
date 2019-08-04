@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -13,8 +14,11 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.yalantis.ucrop.UCrop;
+import com.yalantis.ucrop.view.CropImageView;
 
 import java.io.File;
+
+import static java.security.AccessController.getContext;
 
 
 public class ImageEditor extends AppCompatActivity {
@@ -71,21 +75,22 @@ public class ImageEditor extends AppCompatActivity {
         UCrop ucrop = UCrop.of(uri, Uri.fromFile(new File(getCacheDir(), destinationFileName)));
 
         //ucrop.useSourceImageAspectRatio();
-        //ucrop.withAspectRatio(2,3);
+        ucrop.withAspectRatio(1.5f,2);
 
         ucrop.withOptions(getCropOptions());
 
-        ucrop.start(ImageEditor.this);
+        ucrop.start(this);
     }
 
     private UCrop.Options getCropOptions() {
         UCrop.Options options = new UCrop.Options();
-        //options.setCompressionQuality(100);
+        options.setCompressionQuality(100);
+
         //options.setCompressionFormat(Bitmap.CompressFormat.PNG);
 
         //UI
         options.setHideBottomControls(false);
-        options.setFreeStyleCropEnabled(true);
+        options.setFreeStyleCropEnabled(false);
 
         //Colors
         options.setStatusBarColor(getResources().getColor(R.color.menuColor));
