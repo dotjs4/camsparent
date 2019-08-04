@@ -98,6 +98,7 @@ public class Camera2BasicFragment extends Fragment
 
     private static final int PICK_IMAGE = 100;
     private static final int OPEN_OPTIONS = 101;
+    private static final int OPEN_EDITOR = 102;
     private static final int RESULT_OK = 0;
     View myview;
     Uri imageUri;
@@ -993,8 +994,17 @@ public class Camera2BasicFragment extends Fragment
                 startActivityForResult(i, OPEN_OPTIONS);
             }
             case R.id.openEditor: {
-                Intent i = new Intent(getActivity(), ImageEditor.class);
-                startActivityForResult(i, OPEN_OPTIONS);
+                if (imageUri != null) {
+                    Intent i = new Intent(getActivity(), ImageEditor.class);
+                    i.putExtra("IMAGE_1", String.valueOf(imageUri));
+                    startActivityForResult(i, OPEN_EDITOR);
+                } else {
+                    new AlertDialog.Builder(getActivity())
+                            .setMessage("Du hast noch kein Foto ausgewählt!")
+                            .setPositiveButton("OK", null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
             }
         }
     }
