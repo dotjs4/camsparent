@@ -11,33 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.AppCompatImageView
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/imageOne"
+            android:layout_centerInParent="true"
             android:src="@drawable/logo_3"/>
 
-        <android.support.v7.widget.AppCompatImageView
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/imageTwo"
+            android:layout_centerInParent="true"
             android:src="@drawable/logo_3"/>
     </RelativeLayout>
 
-    <!--
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <SeekBar
-            android:id="@+id/seekBar"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:thumbTint="@color/menuColor"
-            android:progressTint="@color/menuColor"
-            android:progressBackgroundTint="#fff"
-            android:max="100"
-            android:progress="50" />
-    </RelativeLayout>-->
 
 
 </RelativeLayout>

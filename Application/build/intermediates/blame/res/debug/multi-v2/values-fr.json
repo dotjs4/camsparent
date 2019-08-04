@@ -4,6 +4,23 @@
             "outputFile": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fr/values-fr.xml",
             "map": [
                 {
+                    "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0d194d6c7fe72a08d09cc9e0f1eedc1a/res/values-fr/values-fr.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,124,182",
+                        "endColumns": "68,57,52",
+                        "endOffsets": "119,177,230"
+                    },
+                    "to": {
+                        "startLines": "31,32,33",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "3046,3115,3173",
+                        "endColumns": "68,57,52",
+                        "endOffsets": "3110,3168,3221"
+                    }
+                },
+                {
                     "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/740866c2d4bcabf7fd1512a9be7018f1/res/values-fr/values-fr.xml",
                     "from": {
                         "startLines": "2",
