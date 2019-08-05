@@ -6,12 +6,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -24,11 +28,33 @@ import java.io.File;
 import static java.security.AccessController.getContext;
 
 
-public class ImageEditor extends AppCompatActivity {
+//https://judepereira.com/blog/multi-touch-in-android-translate-scale-and-rotate/
 
-    private ImageView image;
+public class ImageEditor extends AppCompatActivity implements View.OnTouchListener  {
+
+    private ImageView imageView1;
     private final int CODE_IMG_GALLERY = 1;
     private final String SAMPLE_CROPPED_IMG_NAME = "SampleCropImg";
+
+
+    // these matrices will be used to move and zoom image
+    private Matrix matrix = new Matrix();
+    private Matrix savedMatrix = new Matrix();
+    // we can be in one of these 3 states
+    private static final int NONE = 0;
+    private static final int DRAG = 1;
+    private static final int ZOOM = 2;
+    private int mode = NONE;
+    // remember some things for zooming
+    private PointF start = new PointF();
+    private PointF mid = new PointF();
+    private float oldDist = 1f;
+    private float d = 0f;
+    private float newRot = 0f;
+    private float[] lastEvent = null;
+    private ImageView view, fin;
+    private  Bitmap bmap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,23 +62,11 @@ public class ImageEditor extends AppCompatActivity {
         final SharedPreferences sharedPref = getSharedPreferences("name", Context.MODE_PRIVATE);
         setContentView(R.layout.edit_images);
 
-        init();
-
         final Uri imageUri = Uri.parse(getIntent().getStringExtra("IMAGE_1"));
+        view = (ImageView) findViewById(R.id.imageOne);
+        view.setImageURI(imageUri);
 
-        image.setImageURI(imageUri);
-
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //startActivityForResult(new Intent().setAction(Intent.ACTION_GET_CONTENT).setType("image/*"), CODE_IMG_GALLERY);
-                StartCrop(imageUri);
-            }
-        });
-    }
-
-    private void init() {
-        this.image = findViewById(R.id.imageOne);
+        view.setOnTouchListener(this);
     }
 
     @Override
@@ -85,8 +99,8 @@ public class ImageEditor extends AppCompatActivity {
 
 
             if (imageUriResultCrop != null) {
-                image.setImageURI(null);
-                image.setImageURI(imageUriResultCrop);
+                imageView1.setImageURI(null);
+                imageView1.setImageURI(imageUriResultCrop);
 
             }
         }
@@ -120,5 +134,109 @@ public class ImageEditor extends AppCompatActivity {
         options.setToolbarColor(getResources().getColor(R.color.menuColor));
 
         return options;
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        // handle touch events here
+
+        view = (ImageView) v;
+
+        switch (event.getAction() & MotionEvent.ACTION_MASK) {
+            case MotionEvent.ACTION_DOWN:
+                savedMatrix.set(matrix);
+                start.set(event.getX(), event.getY());
+                mode = DRAG;
+                lastEvent = null;
+                break;
+            case MotionEvent.ACTION_POINTER_DOWN:
+                oldDist = spacing(event);
+                savedMatrix.set(matrix);
+                midPoint(mid, event);
+                start.set(event.getX(), event.getY());
+                mode = ZOOM;
+                lastEvent = new float[4];
+                lastEvent[0] = event.getX(0);
+                lastEvent[1] = event.getX(1);
+                lastEvent[2] = event.getY(0);
+                lastEvent[3] = event.getY(1);
+                d = rotation(event);
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_POINTER_UP:
+                mode = NONE;
+                lastEvent = null;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (mode == DRAG) {
+                    matrix.set(savedMatrix);
+                    float dx = event.getX(0) - start.x;
+                    float dy = event.getY(0) - start.y;
+                    matrix.postTranslate(dx, dy);
+                } else
+                if (mode == ZOOM) {
+                    float newDist = spacing(event);
+
+                    matrix.set(savedMatrix);
+                    float scale = (newDist / oldDist);
+                    matrix.postScale(scale, scale, mid.x, mid.y);
+
+                    if (lastEvent != null && event.getPointerCount() == 2 || event.getPointerCount() == 3) {
+                        newRot = rotation(event);
+                        float r = newRot - d;
+                        float[] values = new float[9];
+                        matrix.getValues(values);
+                        float tx = values[2];
+                        float ty = values[5];
+                        float sx = values[0];
+                        float xc = (view.getWidth() / 2) * sx;
+                        float yc = (view.getHeight() / 2) * sx;
+                        matrix.postRotate(r, tx + xc, ty + yc);
+
+                        float dx = event.getX(0) - start.x;
+                        float dy = event.getY(0) - start.y;
+                        matrix.postTranslate(dx, dy);
+                    }
+                }
+                break;
+        }
+
+        view.setImageMatrix(matrix);
+
+        bmap= Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.RGB_565);
+        Canvas canvas = new Canvas(bmap);
+        view.draw(canvas);
+
+        //fin.setImageBitmap(bmap);
+        return true;
+    }
+
+    private float spacing(MotionEvent event) {
+        float x = event.getX(0) - event.getX(1);
+        float y = event.getY(0) - event.getY(1);
+        float s=x * x + y * y;
+        return (float)Math.sqrt(s);
+    }
+
+    /**
+     * Calculate the mid point of the first two fingers
+     */
+    private void midPoint(PointF point, MotionEvent event) {
+        float x = event.getX(0) + event.getX(1);
+        float y = event.getY(0) + event.getY(1);
+        point.set(x / 2, y / 2);
+    }
+
+    /**
+     * Calculate the degree to be rotated by.
+     *
+     * @param event
+     * @return Degrees
+     */
+    private float rotation(MotionEvent event) {
+        double delta_x = (event.getX(0) - event.getX(1));
+        double delta_y = (event.getY(0) - event.getY(1));
+        double radians = Math.atan2(delta_y, delta_x);
+        return (float) Math.toDegrees(radians);
     }
 }

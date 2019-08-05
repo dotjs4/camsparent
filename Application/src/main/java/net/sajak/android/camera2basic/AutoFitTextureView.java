@@ -16,10 +16,12 @@
 
 package net.sajak.android.camera2basic;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.TextureView;
+import android.widget.Toast;
 
 /**
  * A {@link TextureView} that can be adjusted to a specified aspect ratio.
@@ -28,9 +30,10 @@ public class AutoFitTextureView extends TextureView {
 
     private int mRatioWidth = 0;
     private int mRatioHeight = 0;
+    Context c;
 
     public AutoFitTextureView(Context context) {
-        this(context, null);
+        this(context, null);c = context;
     }
 
     public AutoFitTextureView(Context context, AttributeSet attrs) {
@@ -55,6 +58,7 @@ public class AutoFitTextureView extends TextureView {
         }
         mRatioWidth = width;
         mRatioHeight = height;
+        //Log.d("TAGGA", mRatioWidth + " " + mRatioHeight);
         requestLayout();
     }
 

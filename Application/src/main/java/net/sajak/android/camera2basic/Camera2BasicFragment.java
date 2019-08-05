@@ -89,6 +89,9 @@ import static java.lang.Thread.sleep;
 public class Camera2BasicFragment extends Fragment
         implements View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
 
+
+    private Size image_ratio = null;
+
     /**
      * Conversion from screen rotation to JPEG orientation.
      */
@@ -381,7 +384,7 @@ public class Camera2BasicFragment extends Fragment
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(activity, text, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, text, Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -572,6 +575,13 @@ public class Camera2BasicFragment extends Fragment
                 Size largest = Collections.max(
                         Arrays.asList(map.getOutputSizes(ImageFormat.JPEG)),
                         new CompareSizesByArea());
+
+                /*for (int i = 0; i < map.getOutputSizes(ImageFormat.JPEG).length; i++) {
+                    Log.d("TAGGA", map.getOutputSizes(ImageFormat.JPEG)[i].getWidth() + " " + map.getOutputSizes(ImageFormat.JPEG)[i].getHeight());
+                }*/
+
+                //TODO: set largest here to the aspect ratio of some image, but the aspect ratio must be available by the camera
+
                 mImageReader = ImageReader.newInstance(largest.getWidth(), largest.getHeight(),
                         ImageFormat.JPEG, /*maxImages*/2);
                 mImageReader.setOnImageAvailableListener(
@@ -1033,7 +1043,6 @@ public class Camera2BasicFragment extends Fragment
             // Set the Image in ImageView after decoding the String
             imageView.setImageBitmap(myFinalImg);
             imageView.setTranslationY(-125);
-
         } /*else if (requestCode == OPEN_OPTIONS) {
             //Log.d("TAG", String.valueOf(getActivity().getSharedPreferences("name", Context.MODE_PRIVATE).getBoolean("flash", false)));
         }*/
