@@ -105,6 +105,7 @@ public class Camera2BasicFragment extends Fragment
     private static final int RESULT_OK = 0;
     View myview;
     Uri imageUri;
+    Uri capturedImage;
 
     static {
         ORIENTATIONS.append(Surface.ROTATION_0, 90);
@@ -895,8 +896,12 @@ public class Camera2BasicFragment extends Fragment
      */
     private void captureStillPicture() {
         try {
-            mFile = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/", "/Camera/Camsparent/image" + System.currentTimeMillis() + ".jpg");
+            long currentTime = System.currentTimeMillis();
+            mFile = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/", "/Camera/Camsparent/image" + currentTime + ".jpg");
 
+
+            String directory = Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/Camera/Camsparent/image" + currentTime + ".jpg";
+            capturedImage = Uri.parse(directory);
             final Activity activity = getActivity();
             if (null == activity || null == mCameraDevice) {
                 return;
@@ -1004,9 +1009,10 @@ public class Camera2BasicFragment extends Fragment
                 startActivityForResult(i, OPEN_OPTIONS);
             }
             case R.id.openEditor: {
-                if (imageUri != null) {
+                if (imageUri != null && capturedImage != null) {
                     Intent i = new Intent(getActivity(), ImageEditor.class);
                     i.putExtra("IMAGE_1", String.valueOf(imageUri));
+                    i.putExtra("IMAGE_2", String.valueOf(capturedImage));
                     startActivityForResult(i, OPEN_EDITOR);
                 } else {
                     new AlertDialog.Builder(getActivity())

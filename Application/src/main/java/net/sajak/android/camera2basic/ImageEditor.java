@@ -61,10 +61,11 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         setContentView(R.layout.edit_images);
 
         final Uri imageUri = Uri.parse(getIntent().getStringExtra("IMAGE_1"));
+        final Uri imageUri2 = Uri.parse(getIntent().getStringExtra("IMAGE_2"));
         view1 = (ImageView) findViewById(R.id.imageOne);
         view2 = (ImageView) findViewById(R.id.imageTwo);
         view1.setImageURI(imageUri);
-        view2.setImageURI(imageUri);
+        view2.setImageURI(imageUri2);
 
         view1.setOnTouchListener(this);
         view2.setOnTouchListener(this);
