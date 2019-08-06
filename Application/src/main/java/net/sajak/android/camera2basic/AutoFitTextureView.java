@@ -72,7 +72,8 @@ public class AutoFitTextureView extends TextureView {
         } else {
             if (width < height * mRatioWidth / mRatioHeight) {
                 setMeasuredDimension(width, width * mRatioHeight / mRatioWidth);
-                setTranslationY(height / 2 - (width * mRatioHeight / mRatioWidth) / 2 - 125);
+                //setTranslationY(height / 2 - (width * mRatioHeight / mRatioWidth) / 2 - 125);
+                setTranslationY(height - (width * mRatioHeight / mRatioWidth) - 125);
                 //Log.d("TAGGA", String.valueOf((double) mRatioHeight / (double) mRatioWidth));
             } else {
                 setMeasuredDimension(height * mRatioWidth / mRatioHeight, height);

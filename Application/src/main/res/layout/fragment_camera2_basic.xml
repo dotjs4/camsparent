@@ -40,8 +40,10 @@
         android:id="@+id/imageOverlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="125px"
         android:alpha="1"
-        />
+        android:scaleType="fitEnd" />
 
     <Button
         android:id="@+id/btnSelectImage"

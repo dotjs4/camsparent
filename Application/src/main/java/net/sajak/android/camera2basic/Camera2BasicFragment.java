@@ -1013,6 +1013,7 @@ public class Camera2BasicFragment extends Fragment
                     Intent i = new Intent(getActivity(), ImageEditor.class);
                     i.putExtra("IMAGE_1", String.valueOf(imageUri));
                     i.putExtra("IMAGE_2", String.valueOf(capturedImage));
+                    i.putExtra("HEIGHT", mTextureView.getHeight());
                     startActivityForResult(i, OPEN_EDITOR);
                 } else {
                     new AlertDialog.Builder(getActivity())
@@ -1048,7 +1049,8 @@ public class Camera2BasicFragment extends Fragment
 
             // Set the Image in ImageView after decoding the String
             imageView.setImageBitmap(myFinalImg);
-            imageView.setTranslationY(-125);
+
+            //imageView.setTranslationY(-125);
         } /*else if (requestCode == OPEN_OPTIONS) {
             //Log.d("TAG", String.valueOf(getActivity().getSharedPreferences("name", Context.MODE_PRIVATE).getBoolean("flash", false)));
         }*/

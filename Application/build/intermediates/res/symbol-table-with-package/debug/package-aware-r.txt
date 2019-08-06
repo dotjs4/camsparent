@@ -844,6 +844,7 @@ id layout_scale_wheel
 id left
 id line1
 id line3
+id linearLayout
 id listMode
 id list_item
 id media_actions

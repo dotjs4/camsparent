@@ -8,15 +8,21 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Point;
 import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.yalantis.ucrop.UCrop;
 import com.yalantis.ucrop.UCropActivity;
@@ -35,8 +41,9 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
 
     // these matrices will be used to move and zoom image
-    private Matrix matrix = new Matrix();
-    private Matrix savedMatrix = new Matrix();
+    private Matrix[] matrix = { new Matrix(), new Matrix()};
+    private Matrix[] savedMatrix = {new Matrix(), new Matrix() };
+
     // we can be in one of these 3 states
     private static final int NONE = 0;
     private static final int DRAG = 1;
@@ -53,6 +60,8 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
     private ImageView view2;
     private  Bitmap bmap;
 
+    int k = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +71,47 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
         final Uri imageUri = Uri.parse(getIntent().getStringExtra("IMAGE_1"));
         final Uri imageUri2 = Uri.parse(getIntent().getStringExtra("IMAGE_2"));
+
+        int height = getIntent().getIntExtra("HEIGHT", 200);
+        final LinearLayout ll = (LinearLayout) findViewById(R.id.linearLayout);
+        ViewGroup.LayoutParams params = ll.getLayoutParams();
+        // Changes the height and width to the specified *pixels*
+        params.height = height;
+        ll.setLayoutParams(params);
+
+
         view1 = (ImageView) findViewById(R.id.imageOne);
         view2 = (ImageView) findViewById(R.id.imageTwo);
         view1.setImageURI(imageUri);
         view2.setImageURI(imageUri2);
+
+        Matrix initialMatrix1 = new Matrix();
+        Matrix initialMatrix2 = new Matrix();
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+
+        int actWidth1 = view1.getDrawable().getIntrinsicWidth();
+        int actHeight1 = view1.getDrawable().getIntrinsicHeight();
+        int actWidth2 = view2.getDrawable().getIntrinsicWidth();
+        int actHeight2 = view2.getDrawable().getIntrinsicHeight();
+
+        float sx1 = (float) width / actWidth1;
+        float sy1 = (float) height / actHeight1;
+        float sx2 = (float) width / actWidth2;
+        float sy2 = (float) height / actHeight2;
+
+        initialMatrix1.setScale(sx1, sy1);
+        initialMatrix2.setScale(sx2, sy2);
+        initialMatrix2.postTranslate(0, - height / 2);
+
+        view1.setImageMatrix(initialMatrix1);
+        view2.setImageMatrix(initialMatrix2);
+
+        matrix[0].set(initialMatrix1);
+        matrix[1].set(initialMatrix2);
 
         view1.setOnTouchListener(this);
         view2.setOnTouchListener(this);
@@ -146,21 +192,23 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         if (v.getId() == R.id.imageOne)
         {
             view1 = (ImageView) v;
+            k = 0;
         }
         else if(v.getId() == R.id.imageTwo) {
             view2 = (ImageView) v;
+            k = 1;
         }
 
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
-                savedMatrix.set(matrix);
+                savedMatrix[k].set(matrix[k]);
                 start.set(event.getX(), event.getY());
                 mode = DRAG;
                 lastEvent = null;
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
                 oldDist = spacing(event);
-                savedMatrix.set(matrix);
+                savedMatrix[k].set(matrix[k]);
                 midPoint(mid, event);
                 start.set(event.getX(), event.getY());
                 mode = ZOOM;
@@ -178,33 +226,33 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (mode == DRAG) {
-                    matrix.set(savedMatrix);
+                    matrix[k].set(savedMatrix[k]);
                     float dx = event.getX(0) - start.x;
                     float dy = event.getY(0) - start.y;
-                    matrix.postTranslate(dx, dy);
+                    matrix[k].postTranslate(dx, dy);
                 } else
                 if (mode == ZOOM) {
                     float newDist = spacing(event);
 
-                    matrix.set(savedMatrix);
+                    matrix[k].set(savedMatrix[k]);
                     float scale = (newDist / oldDist);
-                    matrix.postScale(scale, scale, mid.x, mid.y);
+                    matrix[k].postScale(scale, scale, mid.x, mid.y);
 
                     if (lastEvent != null && event.getPointerCount() == 2 || event.getPointerCount() == 3) {
                         newRot = rotation(event);
                         float r = newRot - d;
                         float[] values = new float[9];
-                        matrix.getValues(values);
+                        matrix[k].getValues(values);
                         float tx = values[2];
                         float ty = values[5];
                         float sx = values[0];
                         float xc = (view1.getWidth() / 2) * sx;
                         float yc = (view1.getHeight() / 2) * sx;
-                        matrix.postRotate(r, tx + xc, ty + yc);
+                        matrix[k].postRotate(r, tx + xc, ty + yc);
 
                         float dx = event.getX(0) - start.x;
                         float dy = event.getY(0) - start.y;
-                        matrix.postTranslate(dx, dy);
+                        matrix[k].postTranslate(dx, dy);
                     }
                 }
                 break;
@@ -212,13 +260,13 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
         if (v.getId() == R.id.imageOne)
         {
-            view1.setImageMatrix(matrix);
+            view1.setImageMatrix(matrix[k]);
             bmap= Bitmap.createBitmap(view1.getWidth(), view1.getHeight(), Bitmap.Config.RGB_565);
             Canvas canvas = new Canvas(bmap);
             view1.draw(canvas);
         }
         else if(v.getId() == R.id.imageTwo) {
-            view2.setImageMatrix(matrix);
+            view2.setImageMatrix(matrix[k]);
             bmap= Bitmap.createBitmap(view2.getWidth(), view2.getHeight(), Bitmap.Config.RGB_565);
             Canvas canvas = new Canvas(bmap);
             view2.draw(canvas);
