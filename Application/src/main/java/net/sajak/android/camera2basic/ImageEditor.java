@@ -11,7 +11,6 @@ import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -21,11 +20,8 @@ import android.widget.ImageView;
 
 import com.yalantis.ucrop.UCrop;
 import com.yalantis.ucrop.UCropActivity;
-import com.yalantis.ucrop.view.CropImageView;
 
 import java.io.File;
-
-import static java.security.AccessController.getContext;
 
 
 //https://judepereira.com/blog/multi-touch-in-android-translate-scale-and-rotate/
@@ -33,6 +29,7 @@ import static java.security.AccessController.getContext;
 public class ImageEditor extends AppCompatActivity implements View.OnTouchListener  {
 
     private ImageView imageView1;
+    private ImageView imageView2;
     private final int CODE_IMG_GALLERY = 1;
     private final String SAMPLE_CROPPED_IMG_NAME = "SampleCropImg";
 
@@ -52,7 +49,8 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
     private float d = 0f;
     private float newRot = 0f;
     private float[] lastEvent = null;
-    private ImageView view, fin;
+    private ImageView view1, fin;
+    private ImageView view2;
     private  Bitmap bmap;
 
 
@@ -63,10 +61,13 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         setContentView(R.layout.edit_images);
 
         final Uri imageUri = Uri.parse(getIntent().getStringExtra("IMAGE_1"));
-        view = (ImageView) findViewById(R.id.imageOne);
-        view.setImageURI(imageUri);
+        view1 = (ImageView) findViewById(R.id.imageOne);
+        view2 = (ImageView) findViewById(R.id.imageTwo);
+        view1.setImageURI(imageUri);
+        view2.setImageURI(imageUri);
 
-        view.setOnTouchListener(this);
+        view1.setOnTouchListener(this);
+        view2.setOnTouchListener(this);
     }
 
     @Override
@@ -101,7 +102,8 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             if (imageUriResultCrop != null) {
                 imageView1.setImageURI(null);
                 imageView1.setImageURI(imageUriResultCrop);
-
+                imageView2.setImageURI(null);
+                imageView2.setImageURI(imageUriResultCrop);
             }
         }
     }
@@ -140,7 +142,13 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
     public boolean onTouch(View v, MotionEvent event) {
         // handle touch events here
 
-        view = (ImageView) v;
+        if (v.getId() == R.id.imageOne)
+        {
+            view1 = (ImageView) v;
+        }
+        else if(v.getId() == R.id.imageTwo) {
+            view2 = (ImageView) v;
+        }
 
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
@@ -189,8 +197,8 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                         float tx = values[2];
                         float ty = values[5];
                         float sx = values[0];
-                        float xc = (view.getWidth() / 2) * sx;
-                        float yc = (view.getHeight() / 2) * sx;
+                        float xc = (view1.getWidth() / 2) * sx;
+                        float yc = (view1.getHeight() / 2) * sx;
                         matrix.postRotate(r, tx + xc, ty + yc);
 
                         float dx = event.getX(0) - start.x;
@@ -201,11 +209,22 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 break;
         }
 
-        view.setImageMatrix(matrix);
+        if (v.getId() == R.id.imageOne)
+        {
+            view1.setImageMatrix(matrix);
+            bmap= Bitmap.createBitmap(view1.getWidth(), view1.getHeight(), Bitmap.Config.RGB_565);
+            Canvas canvas = new Canvas(bmap);
+            view1.draw(canvas);
+        }
+        else if(v.getId() == R.id.imageTwo) {
+            view2.setImageMatrix(matrix);
+            bmap= Bitmap.createBitmap(view2.getWidth(), view2.getHeight(), Bitmap.Config.RGB_565);
+            Canvas canvas = new Canvas(bmap);
+            view2.draw(canvas);
+        }
 
-        bmap= Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.RGB_565);
-        Canvas canvas = new Canvas(bmap);
-        view.draw(canvas);
+
+
 
         //fin.setImageBitmap(bmap);
         return true;

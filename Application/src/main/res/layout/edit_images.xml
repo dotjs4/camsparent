@@ -23,7 +23,8 @@
             android:id="@+id/imageTwo"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.5" />
+            android:layout_weight="0.5"
+            android:scaleType="matrix"/>
     </LinearLayout>
 
 
