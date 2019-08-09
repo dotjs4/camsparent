@@ -25,7 +25,9 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.OrientationEventListener;
+import android.view.Surface;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 
@@ -33,6 +35,7 @@ public class CameraActivity extends AppCompatActivity {
 
     OrientationEventListener mOrientationListener;
     private static final int REQUEST_CODE = 1;
+    public static int ORIENTATION = Surface.ROTATION_0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,7 @@ public class CameraActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         if (null == savedInstanceState) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, Camera2BasicFragment.newInstance())
@@ -48,6 +51,7 @@ public class CameraActivity extends AppCompatActivity {
         }
         mOrientationListener = new OrientationEventListener(this,
                 SensorManager.SENSOR_DELAY_NORMAL) {
+
             boolean isHorizontal = false;
             boolean animStarted = false;
             boolean isUpsideDown = false;
@@ -61,10 +65,12 @@ public class CameraActivity extends AppCompatActivity {
                             rotateAnimation = new RotateAnimation(0, -90, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                             rotateAnimation2 = new RotateAnimation(0, -90, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                             isUpsideDown = true;
+                            ORIENTATION = Surface.ROTATION_270;
                         } else {
                             rotateAnimation = new RotateAnimation(0, 90, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                             rotateAnimation2 = new RotateAnimation(0, 90, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                             isUpsideDown = false;
+                            ORIENTATION = Surface.ROTATION_90;
                         }
                         rotateAnimation.setDuration(500);
                         rotateAnimation.setFillAfter(true);
@@ -104,6 +110,7 @@ public class CameraActivity extends AppCompatActivity {
                             rotateAnimation = new RotateAnimation(90, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                             rotateAnimation2 = new RotateAnimation(90, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                         }
+                        ORIENTATION = Surface.ROTATION_0;
 
                         rotateAnimation.setDuration(500);
                         rotateAnimation.setFillAfter(true);

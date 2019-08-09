@@ -5,15 +5,20 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.PointF;
+import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
@@ -28,6 +33,8 @@ import com.yalantis.ucrop.UCrop;
 import com.yalantis.ucrop.UCropActivity;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 
 //https://judepereira.com/blog/multi-touch-in-android-translate-scale-and-rotate/
@@ -56,13 +63,14 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
     private float d = 0f;
     private float newRot = 0f;
     private float[] lastEvent = null;
-    private ImageView view1, fin;
+    private ImageView view1;
     private ImageView view2;
     private  Bitmap bmap;
 
     int k = 0;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +79,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
         final Uri imageUri = Uri.parse(getIntent().getStringExtra("IMAGE_1"));
         final Uri imageUri2 = Uri.parse(getIntent().getStringExtra("IMAGE_2"));
+        final Uri imageUri_full = Uri.parse(getIntent().getStringExtra("IMAGE_1_FULL"));
 
         int height = getIntent().getIntExtra("HEIGHT", 200);
         final LinearLayout ll = (LinearLayout) findViewById(R.id.linearLayout);
@@ -79,11 +88,15 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         params.height = height;
         ll.setLayoutParams(params);
 
-
+        //the photo from the gallery
         view1 = (ImageView) findViewById(R.id.imageOne);
+
+        //the taken photo
         view2 = (ImageView) findViewById(R.id.imageTwo);
+
         view1.setImageURI(imageUri);
         view2.setImageURI(imageUri2);
+
 
         Matrix initialMatrix1 = new Matrix();
         Matrix initialMatrix2 = new Matrix();
@@ -103,9 +116,32 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         float sx2 = (float) width / actWidth2;
         float sy2 = (float) height / actHeight2;
 
+
         initialMatrix1.setScale(sx1, sy1);
         initialMatrix2.setScale(sx2, sy2);
         initialMatrix2.postTranslate(0, - height / 2);
+
+
+        if (actWidth1 > actHeight1) {
+            sx1 = (float) height / actWidth1;
+            sy1 = (float) width / actHeight1;
+
+            initialMatrix1.setScale(sx1, sy1);
+            initialMatrix1.postRotate(90);
+            initialMatrix1.postTranslate(width, 0);
+            Log.d("TAGGA", "needed to rotate gallery photo");
+        }
+        if (actWidth2 > actHeight2) {
+            sx2 = (float) height / actWidth2;
+            sy2 = (float) width / actHeight2;
+
+            initialMatrix2.setScale(sx2, sy2);
+            initialMatrix2.postRotate(90);
+            initialMatrix2.postTranslate(width, - height / 2);
+            Log.d("TAGGA", "needed to rotate taken photo");
+        }
+
+
 
         view1.setImageMatrix(initialMatrix1);
         view2.setImageMatrix(initialMatrix2);
@@ -113,8 +149,39 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         matrix[0].set(initialMatrix1);
         matrix[1].set(initialMatrix2);
 
+
         view1.setOnTouchListener(this);
         view2.setOnTouchListener(this);
+    }
+
+    // Gets an Images Orientation
+    public static int getOrientationEXIF(Context context, Uri uri) {
+
+        int orientation = 0;
+
+        try {
+
+            ExifInterface exif = new ExifInterface(uri.getPath());
+
+            orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+
+            switch (orientation) {
+
+                case ExifInterface.ORIENTATION_ROTATE_90:
+                    orientation = 90;
+                    return orientation;
+
+                case ExifInterface.ORIENTATION_ROTATE_180:
+                    orientation = 180;
+                    return orientation;
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
     }
 
     @Override

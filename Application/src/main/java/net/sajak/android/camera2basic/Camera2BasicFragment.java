@@ -25,6 +25,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
@@ -46,6 +47,7 @@ import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.Image;
 import android.media.ImageReader;
 import android.media.MediaActionSound;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -61,11 +63,13 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Toast;
@@ -269,7 +273,7 @@ public class Camera2BasicFragment extends Fragment
 
         @Override
         public void onImageAvailable(ImageReader reader) {
-            mBackgroundHandler.post(new ImageSaver(reader.acquireNextImage(), mFile));
+            mBackgroundHandler.post(new ImageSaver(reader.acquireNextImage(), mFile, getContext()));
         }
 
     };
@@ -827,7 +831,9 @@ public class Camera2BasicFragment extends Fragment
         if (null == mTextureView || null == mPreviewSize || null == activity) {
             return;
         }
-        int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
+        //int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
+        int rotation = CameraActivity.ORIENTATION;
+
         Matrix matrix = new Matrix();
         RectF viewRect = new RectF(0, 0, viewWidth, viewHeight);
         RectF bufferRect = new RectF(0, 0, mPreviewSize.getHeight(), mPreviewSize.getWidth());
@@ -902,6 +908,7 @@ public class Camera2BasicFragment extends Fragment
 
             String directory = Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/Camera/Camsparent/image" + currentTime + ".jpg";
             capturedImage = Uri.parse(directory);
+
             final Activity activity = getActivity();
             if (null == activity || null == mCameraDevice) {
                 return;
@@ -917,8 +924,12 @@ public class Camera2BasicFragment extends Fragment
             setAutoFlash(captureBuilder);
 
             // Orientation
-            int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
-            captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, getOrientation(rotation));
+
+            //int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
+
+            //Log.d("TAGGA", CameraActivity.ORIENTATION + " ");
+
+            captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, getOrientation(CameraActivity.ORIENTATION));
 
             CameraCaptureSession.CaptureCallback CaptureCallback
                     = new CameraCaptureSession.CaptureCallback() {
@@ -940,8 +951,6 @@ public class Camera2BasicFragment extends Fragment
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
 
             mCaptureSession.capture(captureBuilder.build(), CaptureCallback, null);
 
@@ -1012,6 +1021,7 @@ public class Camera2BasicFragment extends Fragment
                 if (imageUri != null && capturedImage != null) {
                     Intent i = new Intent(getActivity(), ImageEditor.class);
                     i.putExtra("IMAGE_1", String.valueOf(imageUri));
+                    i.putExtra("IMAGE_1_FULL", String.valueOf(getPath(getActivity().getApplicationContext(), imageUri)));
                     i.putExtra("IMAGE_2", String.valueOf(capturedImage));
                     i.putExtra("HEIGHT", mTextureView.getHeight());
                     startActivityForResult(i, OPEN_EDITOR);
@@ -1026,12 +1036,33 @@ public class Camera2BasicFragment extends Fragment
         }
     }
 
+
+
+    public static String getPath( Context context, Uri uri ) {
+        String result = null;
+        String[] proj = { MediaStore.Images.Media.DATA };
+        Cursor cursor = context.getContentResolver( ).query( uri, proj, null, null, null );
+        if(cursor != null){
+            if ( cursor.moveToFirst( ) ) {
+                int column_index = cursor.getColumnIndexOrThrow( proj[0] );
+                result = cursor.getString( column_index );
+            }
+            cursor.close( );
+        }
+        if(result == null) {
+            result = "Not found";
+        }
+        return result;
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE) {
 
             if (data == null || data.getData() == null) return;
+
+
 
             imageUri = data.getData();
             ImageView imageView = myview.findViewById(R.id.imageOverlay);
@@ -1086,10 +1117,12 @@ public class Camera2BasicFragment extends Fragment
          * The file we save the image into.
          */
         private final File mFile;
+        private Context context;
 
-        ImageSaver(Image image, File file) {
+        ImageSaver(Image image, File file, Context context) {
             mImage = image;
             mFile = file;
+            this.context = context;
         }
 
         @Override
@@ -1106,6 +1139,13 @@ public class Camera2BasicFragment extends Fragment
                 e.printStackTrace();
             } finally {
                 mImage.close();
+                MediaScannerConnection.scanFile(context,
+                        new String[] { mFile.toString() }, null,
+                        new MediaScannerConnection.OnScanCompletedListener() {
+                            public void onScanCompleted(String path, Uri uri) {
+                                // code to execute when scanning is complete
+                            }
+                        });
                 if (null != output) {
                     try {
                         output.close();

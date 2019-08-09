@@ -31,7 +31,8 @@
         <activity android:name="net.sajak.android.camera2basic.CameraSettings" />
         <activity
             android:name="net.sajak.android.camera2basic.CameraActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

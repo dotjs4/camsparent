@@ -1,8 +1,8 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-44:12
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-45:12
+INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-45:12
+INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-45:12
 MERGED from [com.android.support:support-v13:28.0.0] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\e51666519fb224bb4dc21c1bc453f48d\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-v4:28.0.0] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\24df6affd8bbc55091f00d826dbd165b\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\5e05f91e21931daf723260a20d2ed24b\AndroidManifest.xml:17:1-22:12
@@ -35,17 +35,17 @@ MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Jakob\.gradle\cach
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\97ff250f5caa9c234db12a374add8906\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\165db1f874ed8093be804baeec3d89f1\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\4072002f3a89e89fece726ef4f9e6ff2\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-44:12
+INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-45:12
+INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-45:12
 	package
 		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:3:5-45
 	android:versionName
 		INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-44:12
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-45:12
 		INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-44:12
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:1-45:12
 		INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:2:11-69
@@ -74,7 +74,7 @@ ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\Androi
 	android:name
 		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:10:19-67
 application
-ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:12:5-42:19
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:12:5-43:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\194b0d4198c02624a0917a7984520e6c\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\194b0d4198c02624a0917a7984520e6c\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Jakob\.gradle\caches\transforms-2\files-2.1\31505ab3d5dc4b429da6a7303455c983\AndroidManifest.xml:22:5-94
@@ -96,35 +96,37 @@ ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\Androi
 	android:name
 		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:17:19-79
 activity#net.sajak.android.camera2basic.CameraActivity
-ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:18:9-26:20
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:18:9-27:20
+	android:screenOrientation
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:20:13-49
 	android:label
-		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:20:13-45
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:21:13-45
 	android:name
 		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:19:13-73
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:21:13-25:29
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:22:13-26:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:22:17-69
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:23:17-69
 	android:name
-		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:22:25-66
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:23:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:24:17-77
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:25:17-77
 	android:name
-		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:24:27-74
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:25:27-74
 activity#net.sajak.android.camera2basic.ImageEditor
-ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:28:9-35:20
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:29:9-36:20
 	android:label
-		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:29:13-45
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:30:13-45
 	android:name
-		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:28:19-46
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:29:19-46
 activity#com.yalantis.ucrop.UCropActivity
-ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:36:9-39:71
+ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:37:9-40:71
 	android:screenOrientation
-		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:38:13-49
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:39:13-49
 	android:theme
-		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:39:13-69
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:40:13-69
 	android:name
-		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:37:13-60
+		ADDED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml:38:13-60
 uses-sdk
 INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Jakob\Desktop\Projekt\camsparent\Application\src\main\AndroidManifest.xml
