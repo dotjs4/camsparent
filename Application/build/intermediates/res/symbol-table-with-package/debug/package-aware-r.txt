@@ -851,6 +851,7 @@ id media_actions
 id menuBG
 id menu_crop
 id menu_loader
+id mergedImage
 id message
 id middle
 id multiply

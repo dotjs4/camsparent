@@ -8,9 +8,12 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.PointF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
@@ -65,6 +68,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
     private float[] lastEvent = null;
     private ImageView view1;
     private ImageView view2;
+    private ImageView view3;
     private  Bitmap bmap;
 
     int k = 0;
@@ -94,8 +98,12 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         //the taken photo
         view2 = (ImageView) findViewById(R.id.imageTwo);
 
+        view3 = (ImageView) findViewById(R.id.mergedImage);
+
         view1.setImageURI(imageUri);
         view2.setImageURI(imageUri2);
+
+        createMergedImage();
 
 
         Matrix initialMatrix1 = new Matrix();
@@ -152,6 +160,21 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
         view1.setOnTouchListener(this);
         view2.setOnTouchListener(this);
+    }
+
+    public void createMergedImage() {
+        BitmapDrawable drawable = (BitmapDrawable) view1.getDrawable();
+        Bitmap bitmapOne = drawable.getBitmap();
+        drawable = (BitmapDrawable) view2.getDrawable();
+        Bitmap bitmapTwo = drawable.getBitmap();
+
+        Bitmap result = Bitmap.createBitmap(bitmapOne.getWidth(), bitmapOne.getHeight(), bitmapOne.getConfig());
+        Canvas canvas = new Canvas(result);
+        canvas.drawBitmap(bitmapOne, 0f, 0f, null);
+        canvas.drawBitmap(bitmapTwo, 0,  bitmapOne.getHeight() / 2, null);
+
+        view3.setImageBitmap(result);
+
     }
 
     // Gets an Images Orientation
@@ -338,8 +361,6 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             Canvas canvas = new Canvas(bmap);
             view2.draw(canvas);
         }
-
-
 
 
         //fin.setImageBitmap(bmap);
