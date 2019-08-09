@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
@@ -29,6 +30,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -69,7 +71,8 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
     private ImageView view1;
     private ImageView view2;
     private ImageView view3;
-    private  Bitmap bmap;
+    private  Bitmap bmapImageOne;
+    private  Bitmap bmapImageTwo;
 
     int k = 0;
 
@@ -99,6 +102,15 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         view2 = (ImageView) findViewById(R.id.imageTwo);
 
         view3 = (ImageView) findViewById(R.id.mergedImage);
+
+        Button saveButton = findViewById(R.id.saveButton);
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         view1.setImageURI(imageUri);
         view2.setImageURI(imageUri2);
@@ -165,6 +177,8 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
     public void createMergedImage() {
         BitmapDrawable drawable = (BitmapDrawable) view1.getDrawable();
         Bitmap bitmapOne = drawable.getBitmap();
+        Matrix matrix = view1.getImageMatrix();
+        Bitmap croppedBitmap = Bitmap.createBitmap(bitmapOne, 0,  0,bitmapOne.getWidth(), bitmapOne.getHeight(), matrix, true);
         drawable = (BitmapDrawable) view2.getDrawable();
         Bitmap bitmapTwo = drawable.getBitmap();
 
@@ -173,7 +187,6 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         canvas.drawBitmap(bitmapOne, 0f, 0f, null);
         canvas.drawBitmap(bitmapTwo, 0,  bitmapOne.getHeight() / 2, null);
 
-        view3.setImageBitmap(result);
 
     }
 
@@ -207,73 +220,6 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         return 0;
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == CODE_IMG_GALLERY && resultCode == RESULT_OK) {
-
-            Uri imageUri = data.getData();
-            if (imageUri != null) {
-                StartCrop(imageUri);
-            }
-
-        }
-        else if (requestCode == UCrop.REQUEST_CROP && resultCode == RESULT_OK) {
-            Uri imageUriResultCrop = UCrop.getOutput(data);
-
-            new AlertDialog.Builder(ImageEditor.this)
-                    .setTitle("Sicher?")
-                    .setMessage(String.valueOf(imageUriResultCrop))
-
-                    // Specifying a listener allows you to take an action before dismissing the dialog.
-                    // The dialog is automatically dismissed when a dialog button is clicked.
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    })
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .show();
-
-
-            if (imageUriResultCrop != null) {
-                imageView1.setImageURI(null);
-                imageView1.setImageURI(imageUriResultCrop);
-                imageView2.setImageURI(null);
-                imageView2.setImageURI(imageUriResultCrop);
-            }
-        }
-    }
-
-    private void StartCrop(@NonNull Uri uri) {
-        String destinationFileName = SAMPLE_CROPPED_IMG_NAME;
-        destinationFileName += ".jpg";
-
-        UCrop ucrop = UCrop.of(uri, Uri.fromFile(new File(getCacheDir(), destinationFileName)));
-
-        ucrop.useSourceImageAspectRatio();
-
-        ucrop.withOptions(getCropOptions());
-
-        ucrop.start(this);
-    }
-
-    private UCrop.Options getCropOptions() {
-        UCrop.Options options = new UCrop.Options();
-        options.setCompressionQuality(100);
-
-        //options.setCompressionFormat(Bitmap.CompressFormat.PNG);
-
-        //UI
-        options.setHideBottomControls(true);
-        options.setFreeStyleCropEnabled(false);
-        options.setAllowedGestures(UCropActivity.ALL, UCropActivity.ALL, UCropActivity.ALL);
-        //Colors
-        options.setStatusBarColor(getResources().getColor(R.color.menuColor));
-        options.setToolbarColor(getResources().getColor(R.color.menuColor));
-
-        return options;
-    }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -348,22 +294,26 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 break;
         }
 
+
         if (v.getId() == R.id.imageOne)
         {
             view1.setImageMatrix(matrix[k]);
-            bmap= Bitmap.createBitmap(view1.getWidth(), view1.getHeight(), Bitmap.Config.RGB_565);
-            Canvas canvas = new Canvas(bmap);
+            bmapImageOne = Bitmap.createBitmap(view1.getWidth(), view1.getHeight(), Bitmap.Config.RGB_565);
+            Canvas canvas = new Canvas(bmapImageOne);
             view1.draw(canvas);
         }
         else if(v.getId() == R.id.imageTwo) {
             view2.setImageMatrix(matrix[k]);
-            bmap= Bitmap.createBitmap(view2.getWidth(), view2.getHeight(), Bitmap.Config.RGB_565);
-            Canvas canvas = new Canvas(bmap);
+            bmapImageTwo = Bitmap.createBitmap(view2.getWidth(), view2.getHeight(), Bitmap.Config.RGB_565);
+            Canvas canvas = new Canvas(bmapImageTwo);
             view2.draw(canvas);
         }
 
+        if (bmapImageOne != null && bmapImageTwo != null) {
+            view3.setImageBitmap(bmapImageOne);
+        }
 
-        //fin.setImageBitmap(bmap);
+
         return true;
     }
 

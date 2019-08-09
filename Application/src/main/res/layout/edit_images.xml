@@ -42,6 +42,13 @@
             android:id="@+id/mergedImage"
             android:layout_width="200dp"
             android:layout_height="150dp" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
 </RelativeLayout>
