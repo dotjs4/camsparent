@@ -1,27 +1,17 @@
 package net.sajak.android.camera2basic;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
-import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -29,17 +19,12 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-import com.yalantis.ucrop.UCrop;
-import com.yalantis.ucrop.UCropActivity;
-
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 
 //https://judepereira.com/blog/multi-touch-in-android-translate-scale-and-rotate/
@@ -73,8 +58,13 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
     private ImageView view3;
     private  Bitmap bmapImageOne;
     private  Bitmap bmapImageTwo;
-
+    private RelativeLayout ll;
+    private RelativeLayout.LayoutParams v1params, v2params;
+    private int height;
+    Uri imageUri, imageUri2;
     int k = 0;
+
+    Matrix initialMatrix1, initialMatrix2;
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -84,12 +74,12 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         final SharedPreferences sharedPref = getSharedPreferences("name", Context.MODE_PRIVATE);
         setContentView(R.layout.edit_images);
 
-        final Uri imageUri = Uri.parse(getIntent().getStringExtra("IMAGE_1"));
-        final Uri imageUri2 = Uri.parse(getIntent().getStringExtra("IMAGE_2"));
+        imageUri = Uri.parse(getIntent().getStringExtra("IMAGE_1"));
+        imageUri2 = Uri.parse(getIntent().getStringExtra("IMAGE_2"));
         final Uri imageUri_full = Uri.parse(getIntent().getStringExtra("IMAGE_1_FULL"));
 
-        int height = getIntent().getIntExtra("HEIGHT", 200);
-        final LinearLayout ll = (LinearLayout) findViewById(R.id.linearLayout);
+        height = getIntent().getIntExtra("HEIGHT", 200);
+        ll = (RelativeLayout) findViewById(R.id.relativeLayout);
         ViewGroup.LayoutParams params = ll.getLayoutParams();
         // Changes the height and width to the specified *pixels*
         params.height = height;
@@ -100,6 +90,14 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
         //the taken photo
         view2 = (ImageView) findViewById(R.id.imageTwo);
+
+
+        v1params =  new RelativeLayout.LayoutParams(view1.getLayoutParams());
+        v2params = new RelativeLayout.LayoutParams(view2.getLayoutParams());
+        v1params.setMargins(0,0,0,height / 2);
+        v2params.setMargins(0,height / 2,0,0);
+        view1.setLayoutParams(v1params);
+        view2.setLayoutParams(v2params);
 
         view3 = (ImageView) findViewById(R.id.mergedImage);
 
@@ -118,8 +116,8 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         createMergedImage();
 
 
-        Matrix initialMatrix1 = new Matrix();
-        Matrix initialMatrix2 = new Matrix();
+        initialMatrix1 = new Matrix();
+        initialMatrix2 = new Matrix();
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -190,36 +188,6 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
     }
 
-    // Gets an Images Orientation
-    public static int getOrientationEXIF(Context context, Uri uri) {
-
-        int orientation = 0;
-
-        try {
-
-            ExifInterface exif = new ExifInterface(uri.getPath());
-
-            orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
-
-            switch (orientation) {
-
-                case ExifInterface.ORIENTATION_ROTATE_90:
-                    orientation = 90;
-                    return orientation;
-
-                case ExifInterface.ORIENTATION_ROTATE_180:
-                    orientation = 180;
-                    return orientation;
-
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return 0;
-    }
-
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -241,6 +209,19 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 start.set(event.getX(), event.getY());
                 mode = DRAG;
                 lastEvent = null;
+                if (k == 0) {
+                    view2.setAlpha(0.5f);
+                    view2.bringToFront();
+                    v1params =  new RelativeLayout.LayoutParams(view1.getLayoutParams());
+                    v1params.setMargins(0,0,0,0);
+                    view1.setLayoutParams(v1params);
+                } else {
+                    view1.setAlpha(0.5f);
+                    view1.bringToFront();
+                    v2params =  new RelativeLayout.LayoutParams(view2.getLayoutParams());
+                    v2params.setMargins(0,0,0,0);
+                    view2.setLayoutParams(v2params);
+                }
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
                 oldDist = spacing(event);
@@ -256,6 +237,19 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 d = rotation(event);
                 break;
             case MotionEvent.ACTION_UP:
+                if (k == 0) {
+                    view2.setAlpha(1f);
+                    v1params =  new RelativeLayout.LayoutParams(view1.getLayoutParams());
+                    v1params.setMargins(0,0,0,height / 2);
+                    view1.setLayoutParams(v1params);
+                } else {
+                    view1.setAlpha(1f);
+                    v2params =  new RelativeLayout.LayoutParams(view2.getLayoutParams());
+                    v2params.setMargins(0,height / 2,0,0);
+                    view2.setLayoutParams(v2params);
+                    matrix[1].postTranslate(0, - height / 2);
+                }
+                break;
             case MotionEvent.ACTION_POINTER_UP:
                 mode = NONE;
                 lastEvent = null;
