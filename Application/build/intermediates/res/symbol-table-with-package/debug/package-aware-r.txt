@@ -892,6 +892,7 @@ id search_src_text
 id search_voice_btn
 id seekBar
 id select_dialog_listview
+id setChangesBack
 id shortcut
 id showCustom
 id showHome

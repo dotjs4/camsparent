@@ -102,11 +102,12 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         view3 = (ImageView) findViewById(R.id.mergedImage);
 
         Button saveMergedImage = findViewById(R.id.saveMergedImage);
+        Button setChangesBack = findViewById(R.id.setChangesBack);
 
 
         view1.setImageURI(imageUri);
         view2.setImageURI(imageUri2);
-        
+
 
         initialMatrix1 = new Matrix();
         initialMatrix2 = new Matrix();
@@ -182,6 +183,14 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                     }
                 }
 
+            }
+        });
+
+        setChangesBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view1.setImageMatrix(initialMatrix1);
+                view2.setImageMatrix(initialMatrix2);
             }
         });
     }
@@ -314,11 +323,6 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             Canvas canvas = new Canvas(bmapImageTwo);
             view2.draw(canvas);
         }
-
-        if (bmapImageOne != null && bmapImageTwo != null) {
-            view3.setImageBitmap(bmapImageOne);
-        }
-
 
         return true;
     }

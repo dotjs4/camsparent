@@ -48,6 +48,13 @@
             android:layout_height="100dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"/>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/setChangesBack"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"/>
     </RelativeLayout>
 
 </RelativeLayout>
