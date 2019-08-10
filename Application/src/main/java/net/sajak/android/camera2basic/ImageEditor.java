@@ -101,20 +101,12 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
         view3 = (ImageView) findViewById(R.id.mergedImage);
 
-        Button saveButton = findViewById(R.id.saveButton);
+        Button saveMergedImage = findViewById(R.id.saveMergedImage);
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         view1.setImageURI(imageUri);
         view2.setImageURI(imageUri2);
-
-        createMergedImage();
-
+        
 
         initialMatrix1 = new Matrix();
         initialMatrix2 = new Matrix();
@@ -170,23 +162,43 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
         view1.setOnTouchListener(this);
         view2.setOnTouchListener(this);
-    }
 
-    public void createMergedImage() {
+        //TODO: passt erst nach verschieben beider Bilder
         BitmapDrawable drawable = (BitmapDrawable) view1.getDrawable();
-        Bitmap bitmapOne = drawable.getBitmap();
-        Matrix matrix = view1.getImageMatrix();
-        Bitmap croppedBitmap = Bitmap.createBitmap(bitmapOne, 0,  0,bitmapOne.getWidth(), bitmapOne.getHeight(), matrix, true);
-        drawable = (BitmapDrawable) view2.getDrawable();
-        Bitmap bitmapTwo = drawable.getBitmap();
+        bmapImageOne = drawable.getBitmap();
+        BitmapDrawable drawable2 = (BitmapDrawable) view2.getDrawable();
+        bmapImageTwo = drawable2.getBitmap();
 
-        Bitmap result = Bitmap.createBitmap(bitmapOne.getWidth(), bitmapOne.getHeight(), bitmapOne.getConfig());
-        Canvas canvas = new Canvas(result);
-        canvas.drawBitmap(bitmapOne, 0f, 0f, null);
-        canvas.drawBitmap(bitmapTwo, 0,  bitmapOne.getHeight() / 2, null);
+        saveMergedImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (bmapImageOne != null && bmapImageTwo != null) {
+                    Bitmap mergedBitmap = createMergedImage();
+                    if (mergedBitmap != null) {
+                        view3.setImageBitmap(mergedBitmap);
+                    }
+                    else {
+                        view3.setImageBitmap(bmapImageOne);
+                    }
+                }
 
-
+            }
+        });
     }
+
+    public Bitmap createMergedImage() {
+
+        Bitmap result = Bitmap.createBitmap(bmapImageOne.getWidth(), bmapImageOne.getHeight(), bmapImageOne.getConfig());
+        Canvas canvas = new Canvas(result);
+        Bitmap croppedBitmapOne = Bitmap.createBitmap(bmapImageOne, 0,0,bmapImageOne.getWidth(), bmapImageOne.getHeight() / 2);
+        Bitmap croppedBitmapTwo = Bitmap.createBitmap(bmapImageTwo, 0,0,bmapImageTwo.getWidth(), bmapImageTwo.getHeight() / 2);
+        canvas.drawBitmap(croppedBitmapOne, 0f, 0, null);
+        canvas.drawBitmap(croppedBitmapTwo, 0,  bmapImageOne.getHeight() / 2, null);
+
+
+        return result;
+    }
+
 
 
     @Override

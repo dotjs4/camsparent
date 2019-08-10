@@ -874,6 +874,7 @@ id right_icon
 id right_side
 id rotate_scroll_wheel
 id saveButton
+id saveMergedImage
 id scale_scroll_wheel
 id screen
 id scrollIndicatorDown
