@@ -123,28 +123,28 @@
 
     <ImageButton
         android:id="@+id/btnFlash"
-        android:background="@drawable/flashoff"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
         android:layout_weight="1"
-        android:layout_marginTop="20dp" />
+        android:background="@drawable/flashoff" />
 
     <ImageButton
         android:id="@+id/btnSound"
-        android:background="@drawable/soundoff"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
         android:layout_weight="1"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true" />
+        android:background="@drawable/soundoff" />
 
     <ImageButton
         android:id="@+id/btnWebside"
-        android:background="@drawable/online"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="40dp"
         android:layout_weight="1"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentRight="true"/>
+        android:background="@drawable/online" />
 
 </RelativeLayout>

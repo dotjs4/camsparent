@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.ExifInterface;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -109,50 +111,87 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         view1.setImageURI(imageUri);
         view2.setImageURI(imageUri2);
 
+        int actWidth1 = view1.getDrawable().getIntrinsicWidth();
+        int actHeight1 = view1.getDrawable().getIntrinsicHeight();
+        int actWidth2 = view2.getDrawable().getIntrinsicWidth();
+        int actHeight2 = view2.getDrawable().getIntrinsicHeight();
 
-        initialMatrix1 = new Matrix();
-        initialMatrix2 = new Matrix();
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
 
-        int actWidth1 = view1.getDrawable().getIntrinsicWidth();
-        int actHeight1 = view1.getDrawable().getIntrinsicHeight();
-        int actWidth2 = view2.getDrawable().getIntrinsicWidth();
-        int actHeight2 = view2.getDrawable().getIntrinsicHeight();
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inTempStorage = new byte[24*1024*1024];
+        options.outWidth = width;
+        options.outHeight = height;
+        options.inJustDecodeBounds = false;
+        options.inSampleSize=1;
+        Bitmap bmp1=BitmapFactory.decodeFile(imageUri_full.getPath(),options);
+        Bitmap b1;
+        if ( actWidth1 > actHeight1) {
+            b1 = ThumbnailUtils.extractThumbnail(bmp1, height, width);
+        } else {
+            b1 = ThumbnailUtils.extractThumbnail(bmp1, width, height);
+        }
+        view1.setImageBitmap(b1);
+        if(bmp1!=null){
+            bmp1.recycle();
+        }
+        bmp1=BitmapFactory.decodeFile(imageUri2.getPath(),options);
+        Bitmap b2;
+        if ( actWidth1 > actHeight1) {
+            b2 = ThumbnailUtils.extractThumbnail(bmp1, height, width);
+        } else {
+            b2 = ThumbnailUtils.extractThumbnail(bmp1, width, height);
+        }
+        view2.setImageBitmap(b2);
+        if(bmp1!=null){
+            bmp1.recycle();
+        }
 
-        float sx1 = (float) width / actWidth1;
-        float sy1 = (float) height / actHeight1;
-        float sx2 = (float) width / actWidth2;
-        float sy2 = (float) height / actHeight2;
+
+        int w1 = view1.getDrawable().getIntrinsicWidth();
+        int h1 = view1.getDrawable().getIntrinsicHeight();
+        int w2 = view2.getDrawable().getIntrinsicWidth();
+        int h2 = view2.getDrawable().getIntrinsicHeight();
+
+        initialMatrix1 = new Matrix();
+        initialMatrix2 = new Matrix();
 
 
-        initialMatrix1.setScale(sx1, sy1);
-        initialMatrix2.setScale(sx2, sy2);
-        initialMatrix2.postTranslate(0, - height / 2);
+
+        Log.d("TAGGA", "img size w " + w1);
+        Log.d("TAGGA", "img size act " + actWidth1);
+        Log.d("TAGGA", "device width " + width);
+
+        Log.d("TAGGA", "img size h " + h1);
+        Log.d("TAGGA", "img size act " + actHeight1);
+        Log.d("TAGGA", "device height " + height);
 
 
         if (actWidth1 > actHeight1) {
-            sx1 = (float) height / actWidth1;
-            sy1 = (float) width / actHeight1;
 
-            initialMatrix1.setScale(sx1, sy1);
+            //initialMatrix1.setScale(width / height, width / height);
+
             initialMatrix1.postRotate(90);
+            initialMatrix1.postScale(1.0f, (float) 1.0f);
             initialMatrix1.postTranslate(width, 0);
+            //initialMatrix1.postTranslate(width, - height / 4);
             Log.d("TAGGA", "needed to rotate gallery photo");
+        } else {
+            initialMatrix2.postTranslate(0, - height / 2);
         }
         if (actWidth2 > actHeight2) {
-            sx2 = (float) height / actWidth2;
+            /*sx2 = (float) height / actWidth2;
             sy2 = (float) width / actHeight2;
 
-            initialMatrix2.setScale(sx2, sy2);
+            initialMatrix2.setScale(sx2, sy2);*/
             initialMatrix2.postRotate(90);
             initialMatrix2.postTranslate(width, - height / 2);
             Log.d("TAGGA", "needed to rotate taken photo");
         }
-
 
 
         view1.setImageMatrix(initialMatrix1);
@@ -217,7 +256,9 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         return result;
     }
 
-
+    boolean oneTime = true;
+    int moveCounter = 0;
+    boolean layoutChanged = false;
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -239,20 +280,11 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 start.set(event.getX(), event.getY());
                 mode = DRAG;
                 lastEvent = null;
-                if (k == 0) {
-                    view2.setAlpha(0.5f);
-                    view2.bringToFront();
-                    v1params =  new RelativeLayout.LayoutParams(view1.getLayoutParams());
-                    v1params.setMargins(0,0,0,0);
-                    view1.setLayoutParams(v1params);
-                } else {
-                    view1.setAlpha(0.5f);
-                    view1.bringToFront();
-                    v2params =  new RelativeLayout.LayoutParams(view2.getLayoutParams());
-                    v2params.setMargins(0,0,0,0);
-                    view2.setLayoutParams(v2params);
-                }
-                break;
+                oneTime = true;
+                layoutChanged = false;
+                moveCounter = 0;
+                //Log.d("TAGGA", "down called");
+                return true;
             case MotionEvent.ACTION_POINTER_DOWN:
                 oldDist = spacing(event);
                 savedMatrix[k].set(matrix[k]);
@@ -267,6 +299,16 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 d = rotation(event);
                 break;
             case MotionEvent.ACTION_UP:
+                //Log.d("TAGGA", "up called");
+                oneTime = false;
+                if (!layoutChanged || moveCounter <= 10) {
+                    if (k == 0) {
+                        view2.setAlpha(1f);
+                    } else {
+                        view1.setAlpha(1f);
+                    }
+                    return true;
+                }
                 if (k == 0) {
                     view2.setAlpha(1f);
                     v1params =  new RelativeLayout.LayoutParams(view1.getLayoutParams());
@@ -285,6 +327,28 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 lastEvent = null;
                 break;
             case MotionEvent.ACTION_MOVE:
+                moveCounter++;
+                //Log.d("TAGGA", "move called");
+                if (oneTime && (mode == DRAG || mode == ZOOM) && moveCounter == 5) {
+                    //Log.d("TAGGA", "now layout change");
+                    layoutChanged = true;
+                    if (k == 0) {
+                        view2.setAlpha(0.5f);
+                        view2.bringToFront();
+                        v1params = new RelativeLayout.LayoutParams(view1.getLayoutParams());
+                        v1params.setMargins(0, 0, 0, 0);
+                        view1.setLayoutParams(v1params);
+                    } else {
+                        view1.setAlpha(0.5f);
+                        view1.bringToFront();
+                        v2params = new RelativeLayout.LayoutParams(view2.getLayoutParams());
+                        v2params.setMargins(0, 0, 0, 0);
+                        view2.setLayoutParams(v2params);
+                    }
+                    oneTime = false;
+                    return true;
+                }
+
                 if (mode == DRAG) {
                     matrix[k].set(savedMatrix[k]);
                     float dx = event.getX(0) - start.x;
@@ -317,7 +381,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 }
                 break;
         }
-
+        if (oneTime) return true;
 
         if (v.getId() == R.id.imageOne)
         {

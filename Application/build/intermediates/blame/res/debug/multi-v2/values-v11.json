@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v11/values-v11.xml",
+            "outputFile": "/home/jakob/Schreibtisch/Projekt/camsparent/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v11/values-v11.xml",
             "map": [
                 {
-                    "source": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/res/values-v11/template-styles.xml",
+                    "source": "/home/jakob/Schreibtisch/Projekt/camsparent/Application/src/main/res/values-v11/template-styles.xml",
                     "from": {
                         "startLines": "19",
                         "startColumns": "4",

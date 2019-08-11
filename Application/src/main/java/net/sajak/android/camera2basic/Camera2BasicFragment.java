@@ -676,8 +676,9 @@ public class Camera2BasicFragment extends Fragment
                 double ratio = (double) mPreviewSize.getWidth() / (double) mPreviewSize.getHeight();
                 double val = (double) w * ratio;
 
-                getActivity().findViewById(R.id.seekBar).setY((float) ((h / 2 - val / 2 - 125)) / 2 - 20);
+                //getActivity().findViewById(R.id.seekBar).setY((float) ((h / 2 - val / 2 - 125)) / 2 - 20);
 
+                //getActivity().findViewById(R.id.btnFlash).setY((float) ((h / 2 - val / 2 - 125)) / 2);
 
                 // Check if the flash is supported.
                 Boolean available = characteristics.get(CameraCharacteristics.FLASH_INFO_AVAILABLE);
