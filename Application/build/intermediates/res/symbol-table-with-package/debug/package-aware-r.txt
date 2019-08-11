@@ -814,6 +814,7 @@ id fill_horizontal
 id fill_vertical
 id flashSwitch
 id forever
+id goBack
 id goBackToCamera
 id gone
 id group_divider

@@ -1,6 +1,7 @@
 package net.sajak.android.camera2basic;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -191,6 +192,14 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             public void onClick(View view) {
                 view1.setImageMatrix(initialMatrix1);
                 view2.setImageMatrix(initialMatrix2);
+            }
+        });
+
+        findViewById(R.id.goBack).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), CameraActivity.class);
+                startActivity(i);
             }
         });
     }
