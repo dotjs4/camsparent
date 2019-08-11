@@ -344,6 +344,10 @@
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-mdpi-v4/abc_popup_background_mtrl_mult.9.png"
     },
     {
+        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-hdpi_crop.png.flat",
+        "source": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/res/drawable-hdpi/crop.png"
+    },
+    {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-xxhdpi-v4/abc_scrubber_track_mtrl_alpha.9.png"
     },
