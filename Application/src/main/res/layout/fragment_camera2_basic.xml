@@ -130,4 +130,14 @@
         android:layout_marginTop="20dp"
         android:text="EDITOR" />
 
+    <ImageButton
+        android:id="@+id/btnSound"
+        android:background="@drawable/soundoff"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="EDITOR" />
+
 </RelativeLayout>

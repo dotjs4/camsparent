@@ -733,6 +733,8 @@ drawable notify_panel_notification_icon_bg
 drawable rounded_field
 drawable selectimage
 drawable settings
+drawable soundoff
+drawable soundon
 drawable tile
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -786,6 +788,7 @@ id bottom
 id btnCapture
 id btnFlash
 id btnSelectImage
+id btnSound
 id buttonPanel
 id cancel_action
 id center

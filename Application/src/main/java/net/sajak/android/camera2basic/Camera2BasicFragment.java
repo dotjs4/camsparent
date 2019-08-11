@@ -468,6 +468,7 @@ public class Camera2BasicFragment extends Fragment
         view.findViewById(R.id.btnSelectImage).setOnClickListener(this);
         view.findViewById(R.id.btnFlash).setOnClickListener(this);
         view.findViewById(R.id.openEditor).setOnClickListener(this);
+        view.findViewById(R.id.btnSound).setOnClickListener(this);
         SeekBar seekBar = view.findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
         mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
@@ -475,6 +476,10 @@ public class Camera2BasicFragment extends Fragment
         if (getActivity().getSharedPreferences("name", Context.MODE_PRIVATE).getBoolean("flash", false)) {
             ImageButton imageButton = view.findViewById(R.id.btnFlash);
             imageButton.setBackgroundResource(R.drawable.flashon);
+        }
+        if (getActivity().getSharedPreferences("name", Context.MODE_PRIVATE).getBoolean("sound", false)) {
+            ImageButton imageButton = view.findViewById(R.id.btnSound);
+            imageButton.setBackgroundResource(R.drawable.soundon);
         }
     }
 
@@ -1047,6 +1052,28 @@ public class Camera2BasicFragment extends Fragment
                         editor.commit();
                     }
                 }
+                break;
+            }
+            case R.id.btnSound: {
+                if (!getActivity().getSharedPreferences("name", Context.MODE_PRIVATE).getBoolean("sound", false)) {
+                    final SharedPreferences sharedPref = getContext().getSharedPreferences("name", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putBoolean("sound", true);
+                    editor.commit();
+
+                    ImageButton button = (ImageButton) view.findViewById(R.id.btnSound);
+                    button.setBackgroundResource(R.drawable.soundon);
+                }
+                else {
+                    final SharedPreferences sharedPref = getContext().getSharedPreferences("name", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putBoolean("sound", false);
+                    editor.commit();
+
+                    ImageButton button = (ImageButton) view.findViewById(R.id.btnSound);
+                    button.setBackgroundResource(R.drawable.soundoff);
+                }
+
                 break;
             }
             case R.id.openEditor: {
