@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/jakob/Schreibtisch/Projekt/camsparent/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zu/values-zu.xml",
+            "outputFile": "C:\\Users\\Jakob\\Desktop\\Projekt\\camsparent\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zu\\values-zu.xml",
             "map": [
                 {
-                    "source": "/home/jakob/.gradle/caches/transforms-2/files-2.1/c6dca778597c7747158d91a931d6e751/res/values-zu/values-zu.xml",
+                    "source": "C:\\Users\\Jakob\\.gradle\\caches\\transforms-2\\files-2.1\\31505ab3d5dc4b429da6a7303455c983\\res\\values-zu\\values-zu.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/home/jakob/.gradle/caches/transforms-2/files-2.1/851e853d96b0a4afb88f09e574c449f7/res/values-zu/values-zu.xml",
+                    "source": "C:\\Users\\Jakob\\.gradle\\caches\\transforms-2\\files-2.1\\7f288cbd328758a344eb85d956700482\\res\\values-zu\\values-zu.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

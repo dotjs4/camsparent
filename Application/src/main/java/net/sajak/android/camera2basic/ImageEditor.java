@@ -201,6 +201,20 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         matrix[1].set(initialMatrix2);
 
 
+        points1[0] = 0f;
+        points1[1] = 0f;
+        points1[2] = width;
+        points1[3] = 0f;
+        points1[4] = width;
+        points1[5] = height;
+        points1[6] = 0f;
+        points1[7] = height;
+
+        for (int i = 0; i < points1.length; i++) {
+            points1bak[i] = points1[i];
+        }
+
+
         view1.setOnTouchListener(this);
         view2.setOnTouchListener(this);
 
@@ -256,9 +270,70 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         return result;
     }
 
+    Matrix tmpM = new Matrix();
+
+    public boolean pointIsOnImage(ImageView v, Matrix mat, float x, float y) {
+        // Float array that will hold the mapped point (see 'mapPoints' below)
+        float[] p1 = {0, 0};
+
+        // Float array that holds the touch position
+        final float[] p2 = {x, y};
+
+        // Reset temporary matrix
+        tmpM.reset();
+
+        // Get the inverse matrix of the current transformation matrix and store it in the temporary matrix
+        mat.invert(tmpM);
+
+        // Map the touch position on the inverse matrix
+        tmpM.mapPoints(p1, 0, p2, 0, 1);
+
+        // Check if touch position is in the drawable bounds
+        return v.getDrawable().getBounds().contains((int) p1[0], (int) p1[1]);
+    }
+
+    Matrix temp = new Matrix();
+    Matrix bak = new Matrix();
+    float[] points1 = new float[8];
+    float[] points1bak = new float[8];
+
+    public void tryTransform1(int k, float dx, float dy, float rot) {
+        ImageView v;
+        if (k == 0) v = this.view1; else v = this.view2;
+
+        for (int i = 0; i < points1.length; i++) {
+            points1[i] = points1bak[i];
+        }
+
+        matrix[k].mapPoints(points1);
+        temp.set(matrix[k]);
+        bak.set(matrix[k]);
+
+        temp.postTranslate(dx, 0);
+        if (pointIsOnImage(v, temp, 0, 0)) {
+            matrix[k].postTranslate(dx, 0);
+        } else {
+            matrix[k].postTranslate(- points1[0], 0);
+            Log.d("TAGGA", "x korrigiert " + points1[0]);
+        }
+
+        temp.set(bak);
+        temp.postTranslate(0, dy);
+        if (pointIsOnImage(v, temp, 0, 0)) {
+            matrix[k].postTranslate(0, dy);
+        } else {
+            //Log.d("TAGGA", "y korrigiert " + points1[0] + " " + points1[1]);
+            matrix[k].postTranslate(0, - points1[1]);
+            /*Log.d("TAGGA", "rotation: " + rot);
+            Log.d("TAGGA", "translate y: " + (- points1[0] * (float) Math.tan((float) Math.toRadians(rot + 90))));*/
+            //matrix[k].postTranslate(0, + points1[0] * (float) Math.tan((float) Math.toRadians(rot + 90)));
+        }
+    }
+
     boolean oneTime = true;
     int moveCounter = 0;
     boolean layoutChanged = false;
+    float prevDx, prevDy;
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -278,6 +353,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             case MotionEvent.ACTION_DOWN:
                 savedMatrix[k].set(matrix[k]);
                 start.set(event.getX(), event.getY());
+
                 mode = DRAG;
                 lastEvent = null;
                 oneTime = true;
@@ -330,18 +406,15 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 moveCounter++;
                 //Log.d("TAGGA", "move called");
                 if (oneTime && (mode == DRAG || mode == ZOOM) && moveCounter == 5) {
-                    //Log.d("TAGGA", "now layout change");
                     layoutChanged = true;
                     if (k == 0) {
                         view2.setAlpha(0.5f);
                         view2.bringToFront();
-                        v1params = new RelativeLayout.LayoutParams(view1.getLayoutParams());
                         v1params.setMargins(0, 0, 0, 0);
                         view1.setLayoutParams(v1params);
                     } else {
                         view1.setAlpha(0.5f);
                         view1.bringToFront();
-                        v2params = new RelativeLayout.LayoutParams(view2.getLayoutParams());
                         v2params.setMargins(0, 0, 0, 0);
                         view2.setLayoutParams(v2params);
                     }
@@ -353,7 +426,11 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                     matrix[k].set(savedMatrix[k]);
                     float dx = event.getX(0) - start.x;
                     float dy = event.getY(0) - start.y;
-                    matrix[k].postTranslate(dx, dy);
+
+                    if (k == 0)
+                        tryTransform1(k, dx, dy, newRot);
+                    else
+                        matrix[k].postTranslate(dx, dy);
                 } else
                 if (mode == ZOOM) {
                     float newDist = spacing(event);
@@ -426,6 +503,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         double delta_x = (event.getX(0) - event.getX(1));
         double delta_y = (event.getY(0) - event.getY(1));
         double radians = Math.atan2(delta_y, delta_x);
+        //Log.d("TAGGA", "ROTATION: " + (float) Math.toDegrees(radians));
         return (float) Math.toDegrees(radians);
     }
 }
