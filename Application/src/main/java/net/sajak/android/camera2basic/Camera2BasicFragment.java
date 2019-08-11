@@ -23,6 +23,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.database.Cursor;
@@ -70,6 +71,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Toast;
@@ -464,11 +466,16 @@ public class Camera2BasicFragment extends Fragment
         myview = view;
         view.findViewById(R.id.btnCapture).setOnClickListener(this);
         view.findViewById(R.id.btnSelectImage).setOnClickListener(this);
-        view.findViewById(R.id.btnSettings).setOnClickListener(this);
+        view.findViewById(R.id.btnFlash).setOnClickListener(this);
         view.findViewById(R.id.openEditor).setOnClickListener(this);
         SeekBar seekBar = view.findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
         mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
+
+        if (getActivity().getSharedPreferences("name", Context.MODE_PRIVATE).getBoolean("flash", false)) {
+            ImageButton imageButton = view.findViewById(R.id.btnFlash);
+            imageButton.setBackgroundResource(R.drawable.flashon);
+        }
     }
 
     SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
@@ -1013,9 +1020,34 @@ public class Camera2BasicFragment extends Fragment
                 startActivityForResult(gallery, PICK_IMAGE);
                 break;
             }
-            case R.id.btnSettings: {
-                Intent i = new Intent(getActivity(), CameraSettings.class);
-                startActivityForResult(i, OPEN_OPTIONS);
+            case R.id.btnFlash: {
+                if (mFlashSupported) {
+                    if (!getActivity().getSharedPreferences("name", Context.MODE_PRIVATE).getBoolean("flash", false)) {
+                        mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CameraMetadata.CONTROL_AE_MODE_ON_ALWAYS_FLASH);
+                        mPreviewRequestBuilder.set(CaptureRequest.FLASH_MODE, CameraMetadata.FLASH_MODE_SINGLE);
+
+                        ImageButton button = (ImageButton) view.findViewById(R.id.btnFlash);
+                        button.setBackgroundResource(R.drawable.flashon);
+
+                        final SharedPreferences sharedPref = getContext().getSharedPreferences("name", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putBoolean("flash", true);
+                        editor.commit();
+                    }
+                    else {
+                        mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CameraMetadata.CONTROL_AE_MODE_ON);
+                        mPreviewRequestBuilder.set(CaptureRequest.FLASH_MODE, CameraMetadata.FLASH_MODE_OFF);
+
+                        ImageButton button = (ImageButton) view.findViewById(R.id.btnFlash);
+                        button.setBackgroundResource(R.drawable.flashoff);
+
+                        final SharedPreferences sharedPref = getContext().getSharedPreferences("name", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putBoolean("flash", false);
+                        editor.commit();
+                    }
+                }
+                break;
             }
             case R.id.openEditor: {
                 if (imageUri != null && capturedImage != null) {

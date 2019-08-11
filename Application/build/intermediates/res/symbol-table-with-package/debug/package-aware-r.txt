@@ -710,11 +710,14 @@ drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable captureimagebw
+drawable flashoff
+drawable flashon
 drawable ic_action_info
 drawable ic_launcher
 drawable logo_2
 drawable logo_3
 drawable menu_button
+drawable mergeimages
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -781,8 +784,8 @@ id beginning
 id blocking
 id bottom
 id btnCapture
+id btnFlash
 id btnSelectImage
-id btnSettings
 id buttonPanel
 id cancel_action
 id center
