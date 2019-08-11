@@ -730,6 +730,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable online
 drawable rounded_field
 drawable selectimage
 drawable settings
@@ -789,6 +790,7 @@ id btnCapture
 id btnFlash
 id btnSelectImage
 id btnSound
+id btnWebside
 id buttonPanel
 id cancel_action
 id center

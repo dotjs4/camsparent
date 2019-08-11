@@ -469,6 +469,7 @@ public class Camera2BasicFragment extends Fragment
         view.findViewById(R.id.btnFlash).setOnClickListener(this);
         view.findViewById(R.id.openEditor).setOnClickListener(this);
         view.findViewById(R.id.btnSound).setOnClickListener(this);
+        view.findViewById(R.id.btnWebside).setOnClickListener(this);
         SeekBar seekBar = view.findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
         mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
@@ -1074,6 +1075,12 @@ public class Camera2BasicFragment extends Fragment
                     button.setBackgroundResource(R.drawable.soundoff);
                 }
 
+                break;
+            }
+            case R.id.btnWebside: {
+                Uri uri = Uri.parse("http://sajak.net"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
                 break;
             }
             case R.id.openEditor: {

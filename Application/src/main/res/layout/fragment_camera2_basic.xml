@@ -127,8 +127,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_weight="1"
-        android:layout_marginTop="20dp"
-        android:text="EDITOR" />
+        android:layout_marginTop="20dp" />
 
     <ImageButton
         android:id="@+id/btnSound"
@@ -137,7 +136,15 @@
         android:layout_height="100dp"
         android:layout_weight="1"
         android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:text="EDITOR" />
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:id="@+id/btnWebside"
+        android:background="@drawable/online"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentRight="true"/>
 
 </RelativeLayout>

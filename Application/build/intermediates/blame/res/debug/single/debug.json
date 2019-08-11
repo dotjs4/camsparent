@@ -8,12 +8,12 @@
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-ldrtl-xxhdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
-        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-xxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
-    },
-    {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/anim_abc_popup_enter.xml.flat",
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/anim/abc_popup_enter.xml"
+    },
+    {
+        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
+        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-xxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
     },
     {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-ldpi-v4_ucrop_ic_next.png.flat",
@@ -76,12 +76,12 @@
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-xxxhdpi-v4/abc_ic_star_black_16dp.png"
     },
     {
-        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/layout_ucrop_layout_rotate_wheel.xml.flat",
-        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0d194d6c7fe72a08d09cc9e0f1eedc1a/res/layout/ucrop_layout_rotate_wheel.xml"
-    },
-    {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_black_48dp.png.flat",
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-hdpi-v4/abc_ic_star_black_48dp.png"
+    },
+    {
+        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/layout_ucrop_layout_rotate_wheel.xml.flat",
+        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0d194d6c7fe72a08d09cc9e0f1eedc1a/res/layout/ucrop_layout_rotate_wheel.xml"
     },
     {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-ldpi-v4_ucrop_ic_reset.png.flat",
@@ -124,12 +124,12 @@
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0d194d6c7fe72a08d09cc9e0f1eedc1a/res/drawable-xhdpi-v4/ucrop_ic_next.png"
     },
     {
-        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable_abc_ratingbar_material.xml.flat",
-        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable/abc_ratingbar_material.xml"
-    },
-    {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_list_longpressed_holo.9.png.flat",
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-hdpi-v4/abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable_abc_ratingbar_material.xml.flat",
+        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable/abc_ratingbar_material.xml"
     },
     {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
@@ -148,32 +148,32 @@
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0d194d6c7fe72a08d09cc9e0f1eedc1a/res/drawable-hdpi-v4/ucrop_ic_angle.png"
     },
     {
-        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
-        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_000.png"
-    },
-    {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/anim_abc_grow_fade_in_from_bottom.xml.flat",
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
+        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_000.png"
     },
     {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_list_focused_holo.9.png.flat",
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-mdpi-v4/abc_list_focused_holo.9.png"
     },
     {
-        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
-        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
-    },
-    {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-hdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
     },
     {
-        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable_abc_ic_clear_material.xml.flat",
-        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable/abc_ic_clear_material.xml"
+        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
+        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
     },
     {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable_abc_list_selector_background_transition_holo_dark.xml.flat",
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable_abc_ic_clear_material.xml.flat",
+        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable/abc_ic_clear_material.xml"
     },
     {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/layout_abc_tooltip.xml.flat",
@@ -184,12 +184,12 @@
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0d194d6c7fe72a08d09cc9e0f1eedc1a/res/drawable-xxhdpi-v4/ucrop_ic_rotate.png"
     },
     {
-        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
-        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-xxxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
-    },
-    {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/color_abc_primary_text_disable_only_material_light.xml.flat",
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/color/abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
+        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-xxxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_selector_disabled_holo_dark.9.png.flat",
@@ -352,12 +352,12 @@
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-xhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
-        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/color_abc_tint_btn_checkable.xml.flat",
-        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/color/abc_tint_btn_checkable.xml"
-    },
-    {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/layout_ucrop_controls.xml.flat",
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0d194d6c7fe72a08d09cc9e0f1eedc1a/res/layout/ucrop_controls.xml"
+    },
+    {
+        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/color_abc_tint_btn_checkable.xml.flat",
+        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/color/abc_tint_btn_checkable.xml"
     },
     {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
@@ -468,12 +468,12 @@
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/a9b4fafa63a83ea241a880acbc3d4966/res/layout/notification_template_big_media_custom.xml"
     },
     {
-        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
-        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-xxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
-    },
-    {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
+        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-xxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
     },
     {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_ucrop_ic_next.png.flat",
@@ -540,6 +540,10 @@
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/740866c2d4bcabf7fd1512a9be7018f1/res/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
+        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-hdpi_online.png.flat",
+        "source": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/src/main/res/drawable-hdpi/online.png"
+    },
+    {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/layout_ucrop_fragment_photobox.xml.flat",
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0d194d6c7fe72a08d09cc9e0f1eedc1a/res/layout/ucrop_fragment_photobox.xml"
     },
@@ -564,12 +568,12 @@
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/drawable-hdpi-v4/abc_ic_star_black_16dp.png"
     },
     {
-        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/layout_abc_select_dialog_material.xml.flat",
-        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/layout/abc_select_dialog_material.xml"
-    },
-    {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/layout_select_dialog_multichoice_material.xml.flat",
         "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/layout/select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/layout_abc_select_dialog_material.xml.flat",
+        "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/layout/abc_select_dialog_material.xml"
     },
     {
         "merged": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
