@@ -451,10 +451,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                     float dx = event.getX(0) - start.x;
                     float dy = event.getY(0) - start.y;
 
-                    if (k == 0)
-                        tryTransform1(k, dx, dy, newRot);
-                    else
-                        matrix[k].postTranslate(dx, dy);
+                    matrix[k].postTranslate(dx, dy);
                 } else
                 if (mode == ZOOM) {
                     float newDist = spacing(event);

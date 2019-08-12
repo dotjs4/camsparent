@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/samirahuber/Documents/dotJS4/Camsparent/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
+            "outputFile": "C:\\Users\\Jakob\\Desktop\\Projekt\\camsparent\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/a9b4fafa63a83ea241a880acbc3d4966/res/values-v24/values-v24.xml",
+                    "source": "C:\\Users\\Jakob\\.gradle\\caches\\transforms-2\\files-2.1\\eb41ba87bc18c6028a336d7dbf935e8e\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/samirahuber/.gradle/caches/transforms-2/files-2.1/0c6b22cfb7904ff4fe8deb06821e43ca/res/values-v24/values-v24.xml",
+                    "source": "C:\\Users\\Jakob\\.gradle\\caches\\transforms-2\\files-2.1\\7f288cbd328758a344eb85d956700482\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
