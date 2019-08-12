@@ -15,6 +15,7 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -27,6 +28,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 
@@ -266,7 +269,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         canvas.drawBitmap(croppedBitmapOne, 0f, 0, null);
         canvas.drawBitmap(croppedBitmapTwo, 0,  bmapImageOne.getHeight() / 2, null);
 
-
+        saveImage(result);
         return result;
     }
 
@@ -327,6 +330,26 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             /*Log.d("TAGGA", "rotation: " + rot);
             Log.d("TAGGA", "translate y: " + (- points1[0] * (float) Math.tan((float) Math.toRadians(rot + 90))));*/
             //matrix[k].postTranslate(0, + points1[0] * (float) Math.tan((float) Math.toRadians(rot + 90)));
+        }
+    }
+
+    private void saveImage(Bitmap finalBitmap) {
+
+        long currentTime = System.currentTimeMillis();
+        String root = Environment.getExternalStorageDirectory().toString();
+        File myDir = new File(root);
+        myDir.mkdirs();
+        String fname = "Image-" + currentTime + ".jpg";
+        File file = new File(myDir, fname);
+        if (file.exists()) file.delete();
+        Log.i("LOAD", root + fname);
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
