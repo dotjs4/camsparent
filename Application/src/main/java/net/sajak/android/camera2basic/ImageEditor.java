@@ -227,6 +227,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         BitmapDrawable drawable2 = (BitmapDrawable) view2.getDrawable();
         bmapImageTwo = drawable2.getBitmap();
 
+
         saveMergedImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -55,6 +55,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.provider.MediaStore;
+import android.service.autofill.Transformation;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
@@ -71,6 +72,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -112,6 +114,7 @@ public class Camera2BasicFragment extends Fragment
     View myview;
     Uri imageUri;
     Uri capturedImage;
+    ImageView overlayImage;
 
     static {
         ORIENTATIONS.append(Surface.ROTATION_0, 90);
@@ -470,6 +473,7 @@ public class Camera2BasicFragment extends Fragment
         view.findViewById(R.id.openEditor).setOnClickListener(this);
         view.findViewById(R.id.btnSound).setOnClickListener(this);
         view.findViewById(R.id.btnWebside).setOnClickListener(this);
+        overlayImage = view.findViewById(R.id.overlayImage);
         SeekBar seekBar = view.findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
         mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
@@ -919,7 +923,6 @@ public class Camera2BasicFragment extends Fragment
             long currentTime = System.currentTimeMillis();
             mFile = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/", "/Camera/Camsparent/image" + currentTime + ".jpg");
 
-
             String directory = Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/Camera/Camsparent/image" + currentTime + ".jpg";
             capturedImage = Uri.parse(directory);
 
@@ -952,7 +955,6 @@ public class Camera2BasicFragment extends Fragment
                 public void onCaptureCompleted(@NonNull CameraCaptureSession session,
                                                @NonNull CaptureRequest request,
                                                @NonNull TotalCaptureResult result) {
-                    showToast("Saved: " + mFile);
                     Log.d(TAG, mFile.toString());
                     unlockFocus();
                 }
@@ -1019,6 +1021,15 @@ public class Camera2BasicFragment extends Fragment
         switch (view.getId()) {
             case R.id.btnCapture: {
                 takePicture();
+                overlayImage.setVisibility(View.VISIBLE);
+
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                overlayImage.setVisibility(View.GONE);
+                            }
+                        },
+                        150);
                 break;
             }
             case R.id.btnSelectImage: {

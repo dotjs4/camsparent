@@ -871,6 +871,7 @@ id notification_background
 id notification_main_column
 id notification_main_column_container
 id openEditor
+id overlayImage
 id packed
 id parent
 id parentPanel

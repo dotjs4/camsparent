@@ -25,6 +25,13 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentTop="false" />
 
+    <ImageView
+        android:id="@+id/overlayImage"
+        android:layout_width="match_parent"
+        android:background="#000"
+        android:visibility="gone"
+        android:layout_height="match_parent" />
+
     <RelativeLayout
         android:id="@+id/menuBG"
         android:layout_width="match_parent"
@@ -125,6 +132,7 @@
         android:id="@+id/btnFlash"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="40dp"
         android:layout_weight="1"
         android:background="@drawable/flashoff" />
@@ -142,9 +150,11 @@
         android:id="@+id/btnWebside"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginRight="30dp"
         android:layout_alignParentRight="true"
         android:layout_marginTop="40dp"
         android:layout_weight="1"
         android:background="@drawable/online" />
+
 
 </RelativeLayout>
