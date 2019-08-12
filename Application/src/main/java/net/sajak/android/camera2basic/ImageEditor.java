@@ -305,29 +305,60 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             points1[i] = points1bak[i];
         }
 
+
+        Log.d("TAGGA", "dx " + dx);
+        Log.d("TAGGA", "dy " + dy);
+
         matrix[k].mapPoints(points1);
         temp.set(matrix[k]);
         bak.set(matrix[k]);
 
-        temp.postTranslate(dx, 0);
+        temp.postTranslate(dx, dy);
         if (pointIsOnImage(v, temp, 0, 0)) {
-            matrix[k].postTranslate(dx, 0);
+            matrix[k].postTranslate(dx, dy);
         } else {
-            matrix[k].postTranslate(- points1[0], 0);
-            Log.d("TAGGA", "x korrigiert " + points1[0]);
-        }
+            //dx = - points1[0];
+            matrix[k].mapPoints(points1);
 
-        temp.set(bak);
+            Log.d("TAGGA", "trans-x " + points1[0]);
+            Log.d("TAGGA", "trans-y " + points1[1]);
+            Log.d("TAGGA", "rotation " + getRotation(matrix[k]));
+
+            float[] vals = new float[9];
+            matrix[k].getValues(vals);
+
+            dx = - vals[Matrix.MTRANS_X] + (float) ((double) (dy + vals[Matrix.MTRANS_Y]) *  Math.tan((float) Math.toRadians(getRotation(matrix[k]))));
+            temp.set(bak);
+            temp.postTranslate(dx, 0);
+            if (!pointIsOnImage(v, temp, points1[0], 0)) {
+                //dy = - points1[1];
+            }
+            matrix[k].postTranslate(dx, dy);
+        }
+        return;
+        /*
+        matrix[k].mapPoints(points1);
+        //temp.set(bak);
         temp.postTranslate(0, dy);
+
         if (pointIsOnImage(v, temp, 0, 0)) {
             matrix[k].postTranslate(0, dy);
         } else {
-            //Log.d("TAGGA", "y korrigiert " + points1[0] + " " + points1[1]);
+            Log.d("TAGGA", "y korrigiert " + points1[0] + " " + points1[1]);
             matrix[k].postTranslate(0, - points1[1]);
-            /*Log.d("TAGGA", "rotation: " + rot);
-            Log.d("TAGGA", "translate y: " + (- points1[0] * (float) Math.tan((float) Math.toRadians(rot + 90))));*/
-            //matrix[k].postTranslate(0, + points1[0] * (float) Math.tan((float) Math.toRadians(rot + 90)));
-        }
+            Log.d("TAGGA", "rotation: " + rot);
+            Log.d("TAGGA", "translate y: " + (- points1[0] * (float) Math.tan((float) Math.toRadians(rot + 90))));
+            Log.d("TAGGA", "rotation: " + getRotation(matrix[k]));
+            Log.d("TAGGA", "translate y: " + (- points1[0] * (float) Math.tan((float) Math.toRadians(getRotation(matrix[k])))));
+            //matrix[k].postTranslate(0, - points1[0] * (float) Math.tan((float) Math.toRadians(getRotation(matrix[k]))));
+        }*/
+    }
+
+    float getRotation(Matrix m) {
+        float[] v = new float[9];
+        m.getValues(v);
+        float rAngle = Math.round(Math.atan2(v[Matrix.MSKEW_X], v[Matrix.MSCALE_X]) * (180 / Math.PI));
+        return rAngle;
     }
 
     boolean oneTime = true;
