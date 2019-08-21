@@ -97,9 +97,11 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         //the taken photo
         view2 = (ImageView) findViewById(R.id.imageTwo);
 
+        view1.setImageURI(imageUri);
+        view2.setImageURI(imageUri2);
 
-        v1params =  new RelativeLayout.LayoutParams(view1.getLayoutParams());
-        v2params = new RelativeLayout.LayoutParams(view2.getLayoutParams());
+        v1params =  new RelativeLayout.LayoutParams(view1.getLayoutParams().height, view1.getLayoutParams().width);
+        v2params = new RelativeLayout.LayoutParams(view2.getLayoutParams().height, view2.getLayoutParams().width);
         v1params.setMargins(0,0,0,height / 2);
         v2params.setMargins(0,height / 2,0,0);
         view1.setLayoutParams(v1params);
@@ -110,20 +112,28 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         Button saveMergedImage = findViewById(R.id.saveMergedImage);
         Button setChangesBack = findViewById(R.id.setChangesBack);
 
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
 
-        view1.setImageURI(imageUri);
-        view2.setImageURI(imageUri2);
 
         int actWidth1 = view1.getDrawable().getIntrinsicWidth();
         int actHeight1 = view1.getDrawable().getIntrinsicHeight();
         int actWidth2 = view2.getDrawable().getIntrinsicWidth();
         int actHeight2 = view2.getDrawable().getIntrinsicHeight();
 
+        float sx1 = (float) width / actWidth1;
+        float sy1 = (float) height / actHeight1;
+        float sx2 = (float) width / actWidth2;
+        float sy2 = (float) height / actHeight2;
 
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
+
+        initialMatrix1 = new Matrix();
+        initialMatrix2 = new Matrix();
+
+        initialMatrix1.setScale(sx1, sy1);
+        initialMatrix2.setScale(sx2, sy2);
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inTempStorage = new byte[24*1024*1024];
@@ -133,7 +143,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         options.inSampleSize=1;
         Bitmap bmp1=BitmapFactory.decodeFile(imageUri_full.getPath(),options);
         Bitmap b1;
-        if ( actWidth1 > actHeight1) {
+        /*if ( actWidth1 > actHeight1) {
             b1 = ThumbnailUtils.extractThumbnail(bmp1, height, width);
         } else {
             b1 = ThumbnailUtils.extractThumbnail(bmp1, width, height);
@@ -152,7 +162,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         view2.setImageBitmap(b2);
         if(bmp1!=null){
             bmp1.recycle();
-        }
+        }*/
 
 
         int w1 = view1.getDrawable().getIntrinsicWidth();
@@ -160,8 +170,6 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         int w2 = view2.getDrawable().getIntrinsicWidth();
         int h2 = view2.getDrawable().getIntrinsicHeight();
 
-        initialMatrix1 = new Matrix();
-        initialMatrix2 = new Matrix();
 
 
 
@@ -185,6 +193,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             Log.d("TAGGA", "needed to rotate gallery photo");
         } else {
             initialMatrix2.postTranslate(0, - height / 2);
+            Log.d("TAGGA", "did not rotate gallery photo");
         }
         if (actWidth2 > actHeight2) {
             /*sx2 = (float) height / actWidth2;
@@ -409,18 +418,6 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                     }
                     return true;
                 }
-                if (k == 0) {
-                    view2.setAlpha(1f);
-                    v1params =  new RelativeLayout.LayoutParams(view1.getLayoutParams());
-                    v1params.setMargins(0,0,0,height / 2);
-                    view1.setLayoutParams(v1params);
-                } else {
-                    view1.setAlpha(1f);
-                    v2params =  new RelativeLayout.LayoutParams(view2.getLayoutParams());
-                    v2params.setMargins(0,height / 2,0,0);
-                    view2.setLayoutParams(v2params);
-                    matrix[1].postTranslate(0, - height / 2);
-                }
                 break;
             case MotionEvent.ACTION_POINTER_UP:
                 mode = NONE;
@@ -431,17 +428,6 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 //Log.d("TAGGA", "move called");
                 if (oneTime && (mode == DRAG || mode == ZOOM) && moveCounter == 5) {
                     layoutChanged = true;
-                    if (k == 0) {
-                        view2.setAlpha(0.5f);
-                        view2.bringToFront();
-                        v1params.setMargins(0, 0, 0, 0);
-                        view1.setLayoutParams(v1params);
-                    } else {
-                        view1.setAlpha(0.5f);
-                        view1.bringToFront();
-                        v2params.setMargins(0, 0, 0, 0);
-                        view2.setLayoutParams(v2params);
-                    }
                     oneTime = false;
                     return true;
                 }
