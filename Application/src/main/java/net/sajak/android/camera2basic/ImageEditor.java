@@ -71,6 +71,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
     int k = 0;
 
     Matrix initialMatrix1, initialMatrix2;
+    Matrix defaultMatrix1, defaultMatrix2;
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -177,6 +178,9 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             Log.d("TAGGA", "needed to rotate taken photo");
         }
 
+        defaultMatrix1 = initialMatrix1;
+        defaultMatrix2 = initialMatrix2;
+
 
         view1.setImageMatrix(initialMatrix1);
         view2.setImageMatrix(initialMatrix2);
@@ -228,8 +232,8 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         setChangesBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view1.setImageMatrix(initialMatrix1);
-                view2.setImageMatrix(initialMatrix2);
+                view1.setImageMatrix(defaultMatrix1);
+                view2.setImageMatrix(defaultMatrix2);
             }
         });
 
