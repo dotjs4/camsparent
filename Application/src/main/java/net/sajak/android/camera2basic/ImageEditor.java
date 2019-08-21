@@ -141,28 +141,6 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         options.outHeight = height;
         options.inJustDecodeBounds = false;
         options.inSampleSize=1;
-        Bitmap bmp1=BitmapFactory.decodeFile(imageUri_full.getPath(),options);
-        Bitmap b1;
-        /*if ( actWidth1 > actHeight1) {
-            b1 = ThumbnailUtils.extractThumbnail(bmp1, height, width);
-        } else {
-            b1 = ThumbnailUtils.extractThumbnail(bmp1, width, height);
-        }
-        view1.setImageBitmap(b1);
-        if(bmp1!=null){
-            bmp1.recycle();
-        }
-        bmp1=BitmapFactory.decodeFile(imageUri2.getPath(),options);
-        Bitmap b2;
-        if ( actWidth1 > actHeight1) {
-            b2 = ThumbnailUtils.extractThumbnail(bmp1, height, width);
-        } else {
-            b2 = ThumbnailUtils.extractThumbnail(bmp1, width, height);
-        }
-        view2.setImageBitmap(b2);
-        if(bmp1!=null){
-            bmp1.recycle();
-        }*/
 
 
         int w1 = view1.getDrawable().getIntrinsicWidth();
@@ -184,22 +162,16 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
         if (actWidth1 > actHeight1) {
 
-            //initialMatrix1.setScale(width / height, width / height);
 
             initialMatrix1.postRotate(90);
             initialMatrix1.postScale(1.0f, (float) 1.0f);
             initialMatrix1.postTranslate(width, 0);
-            //initialMatrix1.postTranslate(width, - height / 4);
             Log.d("TAGGA", "needed to rotate gallery photo");
         } else {
             initialMatrix2.postTranslate(0, - height / 2);
             Log.d("TAGGA", "did not rotate gallery photo");
         }
         if (actWidth2 > actHeight2) {
-            /*sx2 = (float) height / actWidth2;
-            sy2 = (float) width / actHeight2;
-
-            initialMatrix2.setScale(sx2, sy2);*/
             initialMatrix2.postRotate(90);
             initialMatrix2.postTranslate(width, - height / 2);
             Log.d("TAGGA", "needed to rotate taken photo");
@@ -272,12 +244,12 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
     public Bitmap createMergedImage() {
 
-        Bitmap result = Bitmap.createBitmap(bmapImageOne.getWidth(), bmapImageOne.getHeight(), bmapImageOne.getConfig());
+        Bitmap result = Bitmap.createBitmap(bmapImageOne.getWidth(), bmapImageOne.getHeight() * 2, bmapImageOne.getConfig());
         Canvas canvas = new Canvas(result);
-        Bitmap croppedBitmapOne = Bitmap.createBitmap(bmapImageOne, 0,0,bmapImageOne.getWidth(), bmapImageOne.getHeight() / 2);
-        Bitmap croppedBitmapTwo = Bitmap.createBitmap(bmapImageTwo, 0,0,bmapImageTwo.getWidth(), bmapImageTwo.getHeight() / 2);
+        Bitmap croppedBitmapOne = Bitmap.createBitmap(bmapImageOne, 0,0,bmapImageOne.getWidth(), bmapImageOne.getHeight());
+        Bitmap croppedBitmapTwo = Bitmap.createBitmap(bmapImageTwo, 0,0,bmapImageTwo.getWidth(), bmapImageTwo.getHeight());
         canvas.drawBitmap(croppedBitmapOne, 0f, 0, null);
-        canvas.drawBitmap(croppedBitmapTwo, 0,  bmapImageOne.getHeight() / 2, null);
+        canvas.drawBitmap(croppedBitmapTwo, 0,  bmapImageOne.getHeight(), null);
 
         saveImage(result);
         return result;
@@ -411,11 +383,6 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 //Log.d("TAGGA", "up called");
                 oneTime = false;
                 if (!layoutChanged || moveCounter <= 10) {
-                    if (k == 0) {
-                        view2.setAlpha(1f);
-                    } else {
-                        view1.setAlpha(1f);
-                    }
                     return true;
                 }
                 break;
