@@ -124,17 +124,34 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         int actWidth2 = view2.getDrawable().getIntrinsicWidth();
         int actHeight2 = view2.getDrawable().getIntrinsicHeight();
 
-        float sx1 = (float) width / actWidth1;
-        float sy1 = (float) height / actHeight1;
-        float sx2 = (float) width / actWidth2;
-        float sy2 = (float) height / actHeight2;
 
+        float sx1, sy1, sx2, sy2;
+
+        if (actWidth1 > actHeight1) {
+            //pic1 is landscape
+            sx1 = (float) width / actHeight1;
+            sy1 = (float) height / actWidth1;
+        } else {
+            //pic1 is portrait
+            sx1 = (float) width / actWidth1;
+            sy1 = (float) height / actHeight1;
+        }
+        if (actWidth2 > actHeight2) {
+            //pic2 is landscape
+            sx2 = (float) width / actHeight2;
+            sy2 = (float) height / actWidth2;
+        } else {
+            //pic2 is portrait
+            sx2 = (float) width / actWidth2;
+            sy2 = (float) height / actHeight2;
+        }
 
         initialMatrix1 = new Matrix();
         initialMatrix2 = new Matrix();
 
         initialMatrix1.setScale(sx1, sy1);
         initialMatrix2.setScale(sx2, sy2);
+
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inTempStorage = new byte[24*1024*1024];
@@ -165,7 +182,6 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
 
             initialMatrix1.postRotate(90);
-            initialMatrix1.postScale(1.0f, (float) 1.0f);
             initialMatrix1.postTranslate(width, 0);
             Log.d("TAGGA", "needed to rotate gallery photo");
         } else {
