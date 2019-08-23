@@ -248,6 +248,8 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         setChangesBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                matrix[0].set(defaultMatrix1);
+                matrix[1].set(defaultMatrix2);
                 view1.setImageMatrix(defaultMatrix1);
                 view2.setImageMatrix(defaultMatrix2);
             }
