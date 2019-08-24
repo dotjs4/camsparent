@@ -660,7 +660,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/src/main/java/net/sajak/android/camera2basic/Camera2BasicFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7224">
+            <state relative-caret-position="14175">
               <caret line="1045" selection-start-line="1045" selection-end-line="1045" />
             </state>
           </provider>
@@ -668,10 +668,19 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/edit_images.xml">
-          <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+            <state relative-caret-position="450">
+              <caret line="81" column="47" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="52" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/src/main/res/values/colors.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -688,14 +697,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/src/main/java/net/sajak/android/camera2basic/ImageEditor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="280" column="16" selection-start-line="280" selection-start-column="16" selection-end-line="280" selection-end-column="16" />
-              <folding>
-                <element signature="e#7797#8133#0" expanded="true" />
-                <element signature="e#8132#8133#0" expanded="true" />
-                <element signature="e#8224#8566#0" expanded="true" />
-                <element signature="e#8565#8566#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="262">
+              <caret line="259" column="63" selection-start-line="259" selection-start-column="63" selection-end-line="259" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -715,12 +718,12 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/fragment_camera2_basic.xml">
-          <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2250">
+            <state relative-caret-position="2400">
               <caret line="160" selection-start-line="160" selection-end-line="160" />
             </state>
           </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -746,11 +749,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>imgse</find>
       <find>displaySize</find>
       <find>seekBar</find>
       <find>newRot</find>
-      <find>save</find>
       <find>mfile</find>
       <find>findview</find>
       <find>btncapture</find>
@@ -767,7 +768,6 @@
       <find>imageOne</find>
       <find>imageUri</find>
       <find>TAGGA</find>
-      <find>view3</find>
       <find>initialMatrix1</find>
       <find>view1</find>
       <find>savedMatrix</find>
@@ -776,6 +776,9 @@
       <find>bmapImageOne</find>
       <find>kein</find>
       <find>ausge</find>
+      <find>view3</find>
+      <find>save</find>
+      <find>saveMergedImage</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -818,10 +821,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1280" />
-    <option name="y" value="82" />
-    <option name="width" value="1260" />
-    <option name="height" value="750" />
+    <option name="x" value="42" />
+    <option name="y" value="23" />
+    <option name="width" value="1238" />
+    <option name="height" value="777" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -829,8 +832,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -842,6 +843,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -858,6 +860,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -869,7 +872,7 @@
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="XML" />
-    <property name="device.picker.selection" value="9WVDU18A19011346" />
+    <property name="device.picker.selection" value="8AFX0RUPF" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/Application/src/main/res/drawable-hdpi" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../AndroidMultiTouch" />
   </component>
@@ -1027,11 +1030,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="0" width="1280" height="992" extended-state="6" />
+    <frame x="43" y="23" width="1237" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49926144" visible="true" weight="0.19529983" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49926144" visible="true" weight="0.19414225" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -1047,7 +1050,7 @@
       <window_info anchor="bottom" x="22" y="397" width="1876" height="255" id="Logcat" order="5" weight="0.41073513" />
       <window_info anchor="bottom" id="Android Profiler" order="6" weight="0.32905483" />
       <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.64572865" weight="0.329927" />
-      <window_info anchor="bottom" id="Build" order="8" sideWeight="0.4921875" weight="0.10735123" />
+      <window_info anchor="bottom" id="Build" order="8" sideWeight="0.4921875" visible="true" weight="0.10656934" />
       <window_info anchor="bottom" id="Find" order="9" sideWeight="0.49840087" weight="0.3290461" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
@@ -1103,13 +1106,6 @@
     <entry file="file://$PROJECT_DIR$/Application/src/main/res/drawable-mdpi/captureimagebw.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/res/values/base-strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1131,12 +1127,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
         </state>
       </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
       <provider selected="true" editor-type-id="text-editor" />
@@ -1158,12 +1154,12 @@
     <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-28/android.jar!/android/content/Context.class" />
     <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-28/android.jar!/android/view/View.class" />
     <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/activity_camera_settings.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="77">
           <caret line="58" column="12" selection-start-line="58" selection-start-column="12" selection-end-line="60" selection-end-column="31" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/res/drawable-mdpi/settings.png">
       <provider selected="true" editor-type-id="images" />
@@ -1186,33 +1182,18 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/activity_camera.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="70" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/res/drawable-hdpi/imageview.xml" />
     <entry file="file://$PROJECT_DIR$/Application/src/main/java/net/sajak/android/camera2basic/Camera2BasicFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7224">
+        <state relative-caret-position="14175">
           <caret line="1045" selection-start-line="1045" selection-end-line="1045" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/edit_images.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/src/main/res/drawable-mdpi/menu_button.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -1228,12 +1209,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/fragment_camera2_basic.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2250">
+        <state relative-caret-position="2400">
           <caret line="160" selection-start-line="160" selection-end-line="160" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/java/net/sajak/android/camera2basic/CameraSettings.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1245,16 +1226,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/edit_images.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="81" column="47" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="52" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/res/drawable-mdpi/menu_button.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/java/net/sajak/android/camera2basic/ImageEditor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="280" column="16" selection-start-line="280" selection-start-column="16" selection-end-line="280" selection-end-column="16" />
-          <folding>
-            <element signature="e#7797#8133#0" expanded="true" />
-            <element signature="e#8132#8133#0" expanded="true" />
-            <element signature="e#8224#8566#0" expanded="true" />
-            <element signature="e#8565#8566#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="262">
+          <caret line="259" column="63" selection-start-line="259" selection-start-column="63" selection-end-line="259" selection-end-column="63" />
         </state>
       </provider>
     </entry>

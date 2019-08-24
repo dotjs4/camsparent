@@ -70,6 +70,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
     private int height;
     Uri imageUri, imageUri2;
     int k = 0;
+    boolean saved = false;
 
     Matrix initialMatrix1, initialMatrix2;
     Matrix defaultMatrix1, defaultMatrix2;
@@ -111,7 +112,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
         view3 = (ImageView) findViewById(R.id.mergedImage);
 
-        Button saveMergedImage = findViewById(R.id.saveMergedImage);
+        final Button saveMergedImage = findViewById(R.id.saveMergedImage);
         Button setChangesBack = findViewById(R.id.setChangesBack);
 
         Display display = getWindowManager().getDefaultDisplay();
@@ -254,10 +255,13 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 if (bmapImageOne != null && bmapImageTwo != null) {
                     Bitmap mergedBitmap = createMergedImage();
                     if (mergedBitmap != null) {
-                        view3.setImageBitmap(mergedBitmap);
+                        //view3.setImageBitmap(mergedBitmap);
+                        saveMergedImage.setText("SAVED");
+                        saveMergedImage.setBackgroundColor(0x77ffd802);
+                        saved = true;
                     }
                     else {
-                        view3.setImageBitmap(bmapImageOne);
+                        //view3.setImageBitmap(bmapImageOne);
                     }
                     Log.d("TAGGA", "saved image");
                 } else {
@@ -394,6 +398,12 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         // handle touch events here
+
+        if (saved) {
+            Button saveBtn = findViewById(R.id.saveMergedImage);
+            saveBtn.setText("SAVE");
+            saveBtn.setBackgroundColor(0xFFffd802);
+        }
 
         if (v.getId() == R.id.imageOne)
         {
