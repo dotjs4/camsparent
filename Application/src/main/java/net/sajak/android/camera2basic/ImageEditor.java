@@ -23,6 +23,7 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -229,6 +230,24 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         bmapImageTwo = drawable2.getBitmap();
 
 
+        view1.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+              bmapImageOne = Bitmap.createBitmap(view1.getWidth(), view1.getHeight(), Bitmap.Config.RGB_565);
+              Canvas canvas = new Canvas(bmapImageOne);
+              view1.draw(canvas);
+            }
+        });
+        view2.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                bmapImageTwo = Bitmap.createBitmap(view2.getWidth(), view2.getHeight(), Bitmap.Config.RGB_565);
+                Canvas canvas = new Canvas(bmapImageTwo);
+                view2.draw(canvas);
+            }
+        });
+
+
         saveMergedImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -240,6 +259,9 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                     else {
                         view3.setImageBitmap(bmapImageOne);
                     }
+                    Log.d("TAGGA", "saved image");
+                } else {
+                    Log.d("TAGGA", "herehin");
                 }
 
             }
@@ -252,6 +274,14 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 matrix[1].set(defaultMatrix2);
                 view1.setImageMatrix(defaultMatrix1);
                 view2.setImageMatrix(defaultMatrix2);
+                bmapImageOne = Bitmap.createBitmap(view1.getWidth(), view1.getHeight(), Bitmap.Config.RGB_565);
+                Canvas canvas = new Canvas(bmapImageOne);
+                view1.draw(canvas);
+
+                bmapImageTwo = Bitmap.createBitmap(view2.getWidth(), view2.getHeight(), Bitmap.Config.RGB_565);
+                canvas = new Canvas(bmapImageTwo);
+                view2.draw(canvas);
+
             }
         });
 
