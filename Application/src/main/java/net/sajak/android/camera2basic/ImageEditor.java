@@ -265,7 +265,6 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
     }
 
     public Bitmap createMergedImage() {
-
         Bitmap result = Bitmap.createBitmap(bmapImageOne.getWidth(), bmapImageOne.getHeight() * 2, bmapImageOne.getConfig());
         Canvas canvas = new Canvas(result);
         Bitmap croppedBitmapOne = Bitmap.createBitmap(bmapImageOne, 0,0,bmapImageOne.getWidth(), bmapImageOne.getHeight());

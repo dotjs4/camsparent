@@ -1105,7 +1105,7 @@ public class Camera2BasicFragment extends Fragment
                     startActivityForResult(i, OPEN_EDITOR);
                 } else {
                     new AlertDialog.Builder(getActivity())
-                            .setMessage("Du hast noch kein Foto ausgewählt!")
+                            .setMessage("You need to choose and take a photo!")
                             .setPositiveButton("OK", null)
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();

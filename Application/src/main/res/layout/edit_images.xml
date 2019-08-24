@@ -23,6 +23,7 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="100dp"
             android:adjustViewBounds="false"
+            android:background="@drawable/imageview"
             android:scaleType="matrix" />
 
         <ImageView
@@ -30,6 +31,7 @@
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="100dp"
+            android:background="@drawable/imageview"
             android:scaleType="matrix" />
     </RelativeLayout>
 
@@ -68,7 +70,7 @@
                 android:layout_alignParentLeft="true"
                 android:background="#fff"
                 android:textColor="#000"
-                android:text="RESTART"/>
+                android:text="RESET"/>
 
             <Button
                 android:id="@+id/saveMergedImage"
