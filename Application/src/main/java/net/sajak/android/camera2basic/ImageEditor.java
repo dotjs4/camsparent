@@ -1,5 +1,6 @@
 package net.sajak.android.camera2basic;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -187,13 +188,15 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             initialMatrix1.postTranslate(width, 0);
             Log.d("TAGGA", "needed to rotate gallery photo");
         } else {
-            initialMatrix2.postTranslate(0, - height / 2);
+            //initialMatrix2.postTranslate(0, - height / 2);
             Log.d("TAGGA", "did not rotate gallery photo");
         }
         if (actWidth2 > actHeight2) {
             initialMatrix2.postRotate(90);
             initialMatrix2.postTranslate(width, - height / 2);
             Log.d("TAGGA", "needed to rotate taken photo");
+        } else {
+            initialMatrix2.postTranslate(0, - height / 2);
         }
 
         defaultMatrix1 = initialMatrix1;
@@ -292,8 +295,10 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         findViewById(R.id.goBack).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), CameraActivity.class);
-                startActivity(i);
+                //Intent i = new Intent(getApplicationContext(), CameraActivity.class);
+                //startActivity(i);
+                setResult(Activity.RESULT_OK);
+                finish();
             }
         });
     }
