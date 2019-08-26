@@ -46,8 +46,8 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
 
     // these matrices will be used to move and zoom image
-    private Matrix[] matrix = { new Matrix(), new Matrix()};
-    private Matrix[] savedMatrix = {new Matrix(), new Matrix() };
+    private Matrix[] matrix = { new Matrix(), new Matrix(), new Matrix(), new Matrix()};
+    private Matrix[] savedMatrix = {new Matrix(), new Matrix(), new Matrix(), new Matrix() };
 
     // we can be in one of these 3 states
     private static final int NONE = 0;
@@ -64,17 +64,23 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
     private ImageView view1;
     private ImageView view2;
     private ImageView view3;
+    private ImageView view4;
+    private ImageView mergedView;
     private  Bitmap bmapImageOne;
     private  Bitmap bmapImageTwo;
+    private  Bitmap bmapImageThree;
+    private  Bitmap bmapImageFour;
     private RelativeLayout ll;
     private RelativeLayout.LayoutParams v1params, v2params;
-    private int height;
+    private LinearLayout.LayoutParams v3params, v4params;
+    private int height, width;
+    private boolean isHorizontalCrop = false;
     Uri imageUri, imageUri2;
     int k = 0;
     boolean saved = false;
 
-    Matrix initialMatrix1, initialMatrix2;
-    Matrix defaultMatrix1, defaultMatrix2;
+    Matrix initialMatrix1, initialMatrix2, initialMatrix3, initialMatrix4;
+    Matrix defaultMatrix1, defaultMatrix2, defaultMatrix3, defaultMatrix4;
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -84,11 +90,14 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         final SharedPreferences sharedPref = getSharedPreferences("name", Context.MODE_PRIVATE);
         setContentView(R.layout.edit_images);
 
+        changeCropOrientation();
+
         imageUri = Uri.parse(getIntent().getStringExtra("IMAGE_1"));
         imageUri2 = Uri.parse(getIntent().getStringExtra("IMAGE_2"));
         final Uri imageUri_full = Uri.parse(getIntent().getStringExtra("IMAGE_1_FULL"));
 
         height = getIntent().getIntExtra("HEIGHT", 200);
+        width = getIntent().getIntExtra("WIDTH", 200);
         ll = (RelativeLayout) findViewById(R.id.relativeLayout);
         ViewGroup.LayoutParams params = ll.getLayoutParams();
         // Changes the height and width to the specified *pixels*
@@ -97,23 +106,34 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
         //the photo from the gallery
         view1 = (ImageView) findViewById(R.id.imageOne);
+        view3 = (ImageView) findViewById(R.id.imageThree);
 
         //the taken photo
         view2 = (ImageView) findViewById(R.id.imageTwo);
+        view4 = (ImageView) findViewById(R.id.imageFour);
 
         view1.setImageURI(imageUri);
         view2.setImageURI(imageUri2);
+        view3.setImageURI(imageUri);
+        view4.setImageURI(imageUri2);
 
         v1params =  new RelativeLayout.LayoutParams(view1.getLayoutParams().height, view1.getLayoutParams().width);
         v2params = new RelativeLayout.LayoutParams(view2.getLayoutParams().height, view2.getLayoutParams().width);
+        //v3params =  new LinearLayout.LayoutParams(view3.getLayoutParams().height, view3.getLayoutParams().width);
+        //v4params = new LinearLayout.LayoutParams(view4.getLayoutParams().height, view4.getLayoutParams().width);
         v1params.setMargins(0,0,0,height / 2);
         v2params.setMargins(0,height / 2,0,0);
+        //v3params.setMargins(0,0,width/2,0);
+        //v4params.setMargins(width/2,0,0,0);
         view1.setLayoutParams(v1params);
         view2.setLayoutParams(v2params);
+        //view3.setLayoutParams(v3params);
+        //view4.setLayoutParams(v4params);
 
-        view3 = (ImageView) findViewById(R.id.mergedImage);
+        mergedView = (ImageView) findViewById(R.id.mergedImage);
 
         final Button saveMergedImage = findViewById(R.id.saveMergedImage);
+        Button toogleCropOrientation = findViewById(R.id.toggleCropOrientation);
         Button setChangesBack = findViewById(R.id.setChangesBack);
 
         Display display = getWindowManager().getDefaultDisplay();
@@ -126,34 +146,49 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         int actHeight1 = view1.getDrawable().getIntrinsicHeight();
         int actWidth2 = view2.getDrawable().getIntrinsicWidth();
         int actHeight2 = view2.getDrawable().getIntrinsicHeight();
+        int actWidth3 = view3.getDrawable().getIntrinsicWidth();
+        int actHeight3 = view3.getDrawable().getIntrinsicHeight();
+        int actWidth4 = view4.getDrawable().getIntrinsicWidth();
+        int actHeight4 = view4.getDrawable().getIntrinsicHeight();
 
-
-        float sx1, sy1, sx2, sy2;
+        float sx1, sy1, sx2, sy2, sx3, sy3, sx4, sy4;
 
         if (actWidth1 > actHeight1) {
             //pic1 is landscape
             sx1 = (float) width / actHeight1;
             sy1 = (float) height / actWidth1;
+            sx4 = (float) width / actHeight4;
+            sy4 = (float) height / actWidth4;
         } else {
             //pic1 is portrait
             sx1 = (float) width / actWidth1;
             sy1 = (float) height / actHeight1;
+            sx4 = (float) width / actWidth4;
+            sy4 = (float) height / actHeight4;
         }
         if (actWidth2 > actHeight2) {
             //pic2 is landscape
             sx2 = (float) width / actHeight2;
             sy2 = (float) height / actWidth2;
+            sx3 = (float) width / actHeight3;
+            sy3 = (float) height / actWidth3;
         } else {
             //pic2 is portrait
             sx2 = (float) width / actWidth2;
             sy2 = (float) height / actHeight2;
+            sx3 = (float) width / actWidth3;
+            sy3 = (float) height / actHeight3;
         }
 
         initialMatrix1 = new Matrix();
         initialMatrix2 = new Matrix();
+        initialMatrix3 = new Matrix();
+        initialMatrix4 = new Matrix();
 
         initialMatrix1.setScale(sx1, sy1);
         initialMatrix2.setScale(sx2, sy2);
+        initialMatrix3.setScale(sx3, sy3);
+        initialMatrix4.setScale(sx4, sy4);
 
 
         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -164,26 +199,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         options.inSampleSize=1;
 
 
-        int w1 = view1.getDrawable().getIntrinsicWidth();
-        int h1 = view1.getDrawable().getIntrinsicHeight();
-        int w2 = view2.getDrawable().getIntrinsicWidth();
-        int h2 = view2.getDrawable().getIntrinsicHeight();
-
-
-
-
-        Log.d("TAGGA", "img size w " + w1);
-        Log.d("TAGGA", "img size act " + actWidth1);
-        Log.d("TAGGA", "device width " + width);
-
-        Log.d("TAGGA", "img size h " + h1);
-        Log.d("TAGGA", "img size act " + actHeight1);
-        Log.d("TAGGA", "device height " + height);
-
-
         if (actWidth1 > actHeight1) {
-
-
             initialMatrix1.postRotate(90);
             initialMatrix1.postTranslate(width, 0);
             Log.d("TAGGA", "needed to rotate gallery photo");
@@ -198,16 +214,33 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         } else {
             initialMatrix2.postTranslate(0, - height / 2);
         }
+        if (actWidth3 > actHeight3) {
+            //initialMatrix3.postRotate(90);
+            //initialMatrix3.postTranslate(0, height);
+            Log.d("TAGGA", "needed to rotate taken photo");
+        }
+        if (actWidth4 > actHeight4) {
+            //initialMatrix4.postRotate(90);
+            //initialMatrix4.postTranslate(- width /2, height);
+            Log.d("TAGGA", "needed to rotate taken photo");
+        } else {
+            initialMatrix4.postTranslate(- width /2, 0);
+        }
 
         defaultMatrix1 = initialMatrix1;
         defaultMatrix2 = initialMatrix2;
-
+        defaultMatrix3 = initialMatrix3;
+        defaultMatrix4 = initialMatrix4;
 
         view1.setImageMatrix(initialMatrix1);
         view2.setImageMatrix(initialMatrix2);
+        view3.setImageMatrix(initialMatrix3);
+        view4.setImageMatrix(initialMatrix4);
 
         matrix[0].set(initialMatrix1);
         matrix[1].set(initialMatrix2);
+        matrix[2].set(initialMatrix3);
+        matrix[3].set(initialMatrix4);
 
 
         points1[0] = 0f;
@@ -226,20 +259,26 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
         view1.setOnTouchListener(this);
         view2.setOnTouchListener(this);
+        view3.setOnTouchListener(this);
+        view4.setOnTouchListener(this);
 
         //TODO: passt erst nach verschieben beider Bilder
         BitmapDrawable drawable = (BitmapDrawable) view1.getDrawable();
         bmapImageOne = drawable.getBitmap();
         BitmapDrawable drawable2 = (BitmapDrawable) view2.getDrawable();
         bmapImageTwo = drawable2.getBitmap();
+        BitmapDrawable drawable3 = (BitmapDrawable) view3.getDrawable();
+        bmapImageThree = drawable3.getBitmap();
+        BitmapDrawable drawable4 = (BitmapDrawable) view4.getDrawable();
+        bmapImageFour = drawable4.getBitmap();
 
 
         view1.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-              bmapImageOne = Bitmap.createBitmap(view1.getWidth(), view1.getHeight(), Bitmap.Config.RGB_565);
-              Canvas canvas = new Canvas(bmapImageOne);
-              view1.draw(canvas);
+                bmapImageOne = Bitmap.createBitmap(view1.getWidth(), view1.getHeight(), Bitmap.Config.RGB_565);
+                Canvas canvas = new Canvas(bmapImageOne);
+                view1.draw(canvas);
             }
         });
         view2.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -250,44 +289,104 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                 view2.draw(canvas);
             }
         });
+        view3.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                bmapImageThree = Bitmap.createBitmap(view3.getWidth(), view3.getHeight(), Bitmap.Config.RGB_565);
+                Canvas canvas = new Canvas(bmapImageThree);
+                view3.draw(canvas);
+            }
+        });
+        view4.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                bmapImageFour = Bitmap.createBitmap(view4.getWidth(), view4.getHeight(), Bitmap.Config.RGB_565);
+                Canvas canvas = new Canvas(bmapImageFour);
+                view4.draw(canvas);
+            }
+        });
 
 
         saveMergedImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (bmapImageOne != null && bmapImageTwo != null) {
-                    Bitmap mergedBitmap = createMergedImage();
-                    if (mergedBitmap != null) {
-                        //view3.setImageBitmap(mergedBitmap);
-                        saveMergedImage.setText("SAVED");
-                        saveMergedImage.setBackgroundColor(0x77ffd802);
-                        saved = true;
+                if (isHorizontalCrop) {
+                    if (bmapImageOne != null && bmapImageTwo != null) {
+                        Bitmap mergedBitmap = createMergedImage();
+                        if (mergedBitmap != null) {
+                            //mergedView.setImageBitmap(mergedBitmap);
+                            saveMergedImage.setText("SAVED");
+                            saveMergedImage.setBackgroundColor(0x77ffd802);
+                            saved = true;
+                        }
+                        else {
+                            //mergedView.setImageBitmap(bmapImageOne);
+                        }
+                        Log.d("TAGGA", "saved image");
+                    } else {
+                        Log.d("TAGGA", "herehin");
                     }
-                    else {
-                        //view3.setImageBitmap(bmapImageOne);
+                }
+                else {
+                    if (bmapImageThree != null && bmapImageFour != null) {
+                        Bitmap mergedBitmap = createMergedImage();
+                        if (mergedBitmap != null) {
+                            //mergedView.setImageBitmap(mergedBitmap);
+                            saveMergedImage.setText("SAVED");
+                            saveMergedImage.setBackgroundColor(0x77ffd802);
+                            saved = true;
+                        }
+                        else {
+                            //mergedView.setImageBitmap(bmapImageOne);
+                        }
+                        Log.d("TAGGA", "saved image");
+                    } else {
+                        Log.d("TAGGA", "herehin");
                     }
-                    Log.d("TAGGA", "saved image");
-                } else {
-                    Log.d("TAGGA", "herehin");
                 }
 
+
+            }
+        });
+
+        toogleCropOrientation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isHorizontalCrop = !isHorizontalCrop;
+                changeCropOrientation();
             }
         });
 
         setChangesBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                matrix[0].set(defaultMatrix1);
-                matrix[1].set(defaultMatrix2);
-                view1.setImageMatrix(defaultMatrix1);
-                view2.setImageMatrix(defaultMatrix2);
-                bmapImageOne = Bitmap.createBitmap(view1.getWidth(), view1.getHeight(), Bitmap.Config.RGB_565);
-                Canvas canvas = new Canvas(bmapImageOne);
-                view1.draw(canvas);
+                if (isHorizontalCrop) {
+                    matrix[0].set(defaultMatrix1);
+                    matrix[1].set(defaultMatrix2);
+                    view1.setImageMatrix(defaultMatrix1);
+                    view2.setImageMatrix(defaultMatrix2);
+                    bmapImageOne = Bitmap.createBitmap(view1.getWidth(), view1.getHeight(), Bitmap.Config.RGB_565);
+                    Canvas canvas = new Canvas(bmapImageOne);
+                    view1.draw(canvas);
 
-                bmapImageTwo = Bitmap.createBitmap(view2.getWidth(), view2.getHeight(), Bitmap.Config.RGB_565);
-                canvas = new Canvas(bmapImageTwo);
-                view2.draw(canvas);
+                    bmapImageTwo = Bitmap.createBitmap(view2.getWidth(), view2.getHeight(), Bitmap.Config.RGB_565);
+                    canvas = new Canvas(bmapImageTwo);
+                    view2.draw(canvas);
+                }
+                else {
+                    matrix[2].set(defaultMatrix3);
+                    matrix[3].set(defaultMatrix4);
+                    view3.setImageMatrix(defaultMatrix3);
+                    view4.setImageMatrix(defaultMatrix4);
+                    bmapImageThree = Bitmap.createBitmap(view3.getWidth(), view3.getHeight(), Bitmap.Config.RGB_565);
+                    Canvas canvas = new Canvas(bmapImageThree);
+                    view3.draw(canvas);
+
+                    bmapImageFour = Bitmap.createBitmap(view4.getWidth(), view4.getHeight(), Bitmap.Config.RGB_565);
+                    canvas = new Canvas(bmapImageFour);
+                    view4.draw(canvas);
+                }
+
 
             }
         });
@@ -303,16 +402,41 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         });
     }
 
-    public Bitmap createMergedImage() {
-        Bitmap result = Bitmap.createBitmap(bmapImageOne.getWidth(), bmapImageOne.getHeight() * 2, bmapImageOne.getConfig());
-        Canvas canvas = new Canvas(result);
-        Bitmap croppedBitmapOne = Bitmap.createBitmap(bmapImageOne, 0,0,bmapImageOne.getWidth(), bmapImageOne.getHeight());
-        Bitmap croppedBitmapTwo = Bitmap.createBitmap(bmapImageTwo, 0,0,bmapImageTwo.getWidth(), bmapImageTwo.getHeight());
-        canvas.drawBitmap(croppedBitmapOne, 0f, 0, null);
-        canvas.drawBitmap(croppedBitmapTwo, 0,  bmapImageOne.getHeight(), null);
+    private void changeCropOrientation() {
+        if (isHorizontalCrop) {
+            findViewById(R.id.relativeLayout).setVisibility(View.VISIBLE);
+            findViewById(R.id.verticalLayout).setVisibility(View.INVISIBLE);
+        }
+        else {
+            findViewById(R.id.relativeLayout).setVisibility(View.INVISIBLE);
+            findViewById(R.id.verticalLayout).setVisibility(View.VISIBLE);
+        }
+    }
 
-        saveImage(result);
-        return result;
+    public Bitmap createMergedImage() {
+        if (isHorizontalCrop) {
+            Bitmap result = Bitmap.createBitmap(bmapImageOne.getWidth(), bmapImageOne.getHeight() * 2, bmapImageOne.getConfig());
+            Canvas canvas = new Canvas(result);
+            Bitmap croppedBitmapOne = Bitmap.createBitmap(bmapImageOne, 0,0,bmapImageOne.getWidth(), bmapImageOne.getHeight());
+            Bitmap croppedBitmapTwo = Bitmap.createBitmap(bmapImageTwo, 0,0,bmapImageTwo.getWidth(), bmapImageTwo.getHeight());
+            canvas.drawBitmap(croppedBitmapOne, 0f, 0, null);
+            canvas.drawBitmap(croppedBitmapTwo, 0,  bmapImageOne.getHeight(), null);
+
+            saveImage(result);
+            return result;
+        }
+        else {
+            Bitmap result = Bitmap.createBitmap(bmapImageThree.getWidth() * 2, bmapImageThree.getHeight(), bmapImageThree.getConfig());
+            Canvas canvas = new Canvas(result);
+            Bitmap croppedBitmapOne = Bitmap.createBitmap(bmapImageThree, 0,0,bmapImageThree.getWidth(), bmapImageThree.getHeight());
+            Bitmap croppedBitmapTwo = Bitmap.createBitmap(bmapImageFour, 0,0,bmapImageFour.getWidth(), bmapImageFour.getHeight());
+            canvas.drawBitmap(croppedBitmapOne, 0f, 0, null);
+            canvas.drawBitmap(croppedBitmapTwo, bmapImageThree.getWidth(), 0,  null);
+
+            saveImage(result);
+            return result;
+        }
+
     }
 
     Matrix tmpM = new Matrix();
@@ -344,7 +468,18 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
     public void tryTransform1(int k, float dx, float dy, float rot) {
         ImageView v;
-        if (k == 0) v = this.view1; else v = this.view2;
+        if (k == 0) {
+            v = this.view1;
+        }
+        else if (k == 1) {
+            v = this.view2;
+        }
+        else if (k == 2) {
+            v = this.view3;
+        }
+        else {
+            v = this.view4;
+        }
 
         for (int i = 0; i < points1.length; i++) {
             points1[i] = points1bak[i];
@@ -418,6 +553,14 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         else if(v.getId() == R.id.imageTwo) {
             view2 = (ImageView) v;
             k = 1;
+        }
+        else if(v.getId() == R.id.imageThree) {
+            view3 = (ImageView) v;
+            k = 2;
+        }
+        else if(v.getId() == R.id.imageFour) {
+            view4 = (ImageView) v;
+            k = 3;
         }
 
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
@@ -512,6 +655,18 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             bmapImageTwo = Bitmap.createBitmap(view2.getWidth(), view2.getHeight(), Bitmap.Config.RGB_565);
             Canvas canvas = new Canvas(bmapImageTwo);
             view2.draw(canvas);
+        }
+        else if(v.getId() == R.id.imageThree) {
+            view3.setImageMatrix(matrix[k]);
+            bmapImageThree = Bitmap.createBitmap(view3.getWidth(), view3.getHeight(), Bitmap.Config.RGB_565);
+            Canvas canvas = new Canvas(bmapImageThree);
+            view3.draw(canvas);
+        }
+        else if(v.getId() == R.id.imageFour) {
+            view4.setImageMatrix(matrix[k]);
+            bmapImageFour = Bitmap.createBitmap(view4.getWidth(), view4.getHeight(), Bitmap.Config.RGB_565);
+            Canvas canvas = new Canvas(bmapImageFour);
+            view4.draw(canvas);
         }
 
         return true;
