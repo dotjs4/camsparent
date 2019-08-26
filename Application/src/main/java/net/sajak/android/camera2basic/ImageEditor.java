@@ -153,27 +153,37 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             //pic1 is landscape
             sx1 = (float) width / actHeight1;
             sy1 = (float) height / actWidth1;
-            sx4 = (float) width / actHeight4;
-            sy4 = (float) height / actWidth4;
         } else {
             //pic1 is portrait
             sx1 = (float) width / actWidth1;
             sy1 = (float) height / actHeight1;
-            sx4 = (float) width / actWidth4;
-            sy4 = (float) height / actHeight4;
         }
         if (actWidth2 > actHeight2) {
             //pic2 is landscape
             sx2 = (float) width / actHeight2;
             sy2 = (float) height / actWidth2;
-            sx3 = (float) width / actHeight3;
-            sy3 = (float) height / actWidth3;
         } else {
             //pic2 is portrait
             sx2 = (float) width / actWidth2;
             sy2 = (float) height / actHeight2;
+        }
+        if (actWidth3 > actHeight3) {
+            //pic2 is landscape
+            sx3 = (float) width / actHeight3;
+            sy3 = (float) height / actWidth3;
+        } else {
+            //pic2 is portrait
             sx3 = (float) width / actWidth3;
             sy3 = (float) height / actHeight3;
+        }
+        if (actWidth4 > actHeight4) {
+            //pic1 is landscape
+            sx4 = (float) width / actHeight4;
+            sy4 = (float) height / actWidth4;
+        } else {
+            //pic1 is portrait
+            sx4 = (float) width / actWidth4;
+            sy4 = (float) height / actHeight4;
         }
 
         initialMatrix1 = new Matrix();
@@ -211,13 +221,13 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             initialMatrix2.postTranslate(0, - height / 2);
         }
         if (actWidth3 > actHeight3) {
-            //initialMatrix3.postRotate(90);
-            //initialMatrix3.postTranslate(0, height);
+            initialMatrix3.postRotate(90);
+            initialMatrix3.postTranslate(width, 0);
             Log.d("TAGGA", "needed to rotate taken photo");
         }
         if (actWidth4 > actHeight4) {
-            //initialMatrix4.postRotate(90);
-            //initialMatrix4.postTranslate(- width /2, height);
+            initialMatrix4.postRotate(90);
+            initialMatrix4.postTranslate(width/2, 0);
             Log.d("TAGGA", "needed to rotate taken photo");
         } else {
             initialMatrix4.postTranslate(- width /2, 0);
