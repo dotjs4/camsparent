@@ -45,9 +45,9 @@
         android:orientation="horizontal">
 
         <ImageView android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginTop="100dp"
+            android:layout_marginBottom="50dp"
             android:id="@+id/imageThree"
             android:adjustViewBounds="false"
             android:background="@drawable/imageview"
@@ -55,9 +55,9 @@
             />
 
         <ImageView android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginTop="100dp"
+            android:layout_marginBottom="50dp"
             android:id="@+id/imageFour"
             android:adjustViewBounds="false"
             android:background="@drawable/imageview"

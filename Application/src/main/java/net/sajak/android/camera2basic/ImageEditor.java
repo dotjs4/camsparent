@@ -119,16 +119,12 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
 
         v1params =  new RelativeLayout.LayoutParams(view1.getLayoutParams().height, view1.getLayoutParams().width);
         v2params = new RelativeLayout.LayoutParams(view2.getLayoutParams().height, view2.getLayoutParams().width);
-        //v3params =  new LinearLayout.LayoutParams(view3.getLayoutParams().height, view3.getLayoutParams().width);
-        //v4params = new LinearLayout.LayoutParams(view4.getLayoutParams().height, view4.getLayoutParams().width);
+        view3.getLayoutParams().height = height;
+        view4.getLayoutParams().height = height;
         v1params.setMargins(0,0,0,height / 2);
         v2params.setMargins(0,height / 2,0,0);
-        //v3params.setMargins(0,0,width/2,0);
-        //v4params.setMargins(width/2,0,0,0);
         view1.setLayoutParams(v1params);
         view2.setLayoutParams(v2params);
-        //view3.setLayoutParams(v3params);
-        //view4.setLayoutParams(v4params);
 
         mergedView = (ImageView) findViewById(R.id.mergedImage);
 
