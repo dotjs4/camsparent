@@ -19,7 +19,19 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/constraint/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/constraint/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/compat/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/compat/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/constraint/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/constraint/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/coreui/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/coreui/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/coreutils/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/coreutils/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/fragment/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/fragment/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/graphics/drawable/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/graphics/drawable/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/mediacompat/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/mediacompat/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/v13/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/v13/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/v4/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/v4/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/v7/appcompat/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/Application/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/v7/appcompat/R$id.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/src/main/java/net/sajak/android/camera2basic/ImageEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/main/java/net/sajak/android/camera2basic/ImageEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/main/res/layout/edit_images.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/main/res/layout/edit_images.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,8 +74,8 @@
         <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/edit_images.xml">
           <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="59" column="42" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+            <state relative-caret-position="202">
+              <caret line="57" column="33" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -89,15 +101,21 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/src/main/java/net/sajak/android/camera2basic/ImageEditor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="158" column="46" lean-forward="true" selection-start-line="158" selection-start-column="46" selection-end-line="158" selection-end-column="46" />
+            <state relative-caret-position="358">
+              <caret line="420" column="23" selection-start-line="420" selection-start-column="23" selection-end-line="420" selection-end-column="23" />
               <folding>
-                <element signature="e#10713#11055#0" expanded="true" />
-                <element signature="e#11054#11055#0" expanded="true" />
-                <element signature="e#11120#11462#0" expanded="true" />
-                <element signature="e#11461#11462#0" expanded="true" />
-                <element signature="e#14112#14326#0" expanded="true" />
-                <element signature="e#14325#14326#0" expanded="true" />
+                <element signature="e#10388#10730#0" expanded="true" />
+                <element signature="e#10729#10730#0" expanded="true" />
+                <element signature="e#10795#11137#0" expanded="true" />
+                <element signature="e#11136#11137#0" expanded="true" />
+                <element signature="e#13787#14001#0" expanded="true" />
+                <element signature="e#14000#14001#0" expanded="true" />
+                <element signature="e#14051#16156#0" expanded="true" />
+                <element signature="e#16155#16156#0" expanded="true" />
+                <element signature="e#16202#17724#0" expanded="true" />
+                <element signature="e#17723#17724#0" expanded="true" />
+                <element signature="e#17781#18097#0" expanded="true" />
+                <element signature="e#18096#18097#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -158,9 +176,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>overlayImage</find>
-      <find>btncap</find>
-      <find>takePicture</find>
       <find>lockFocus</find>
       <find>delay</find>
       <find>myDir</find>
@@ -176,7 +191,6 @@
       <find>save</find>
       <find>saveMergedImage</find>
       <find>view3</find>
-      <find>view1</find>
       <find>v2params</find>
       <find>height</find>
       <find>initialMatrix1</find>
@@ -188,6 +202,10 @@
       <find>isHorizontalCrop</find>
       <find>savemergedimage</find>
       <find>sx2</find>
+      <find>togglecro</find>
+      <find>tempView1</find>
+      <find>view1</find>
+      <find>switched</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -455,7 +473,7 @@
       <window_info anchor="bottom" id="TODO" order="1" weight="0.3290461" />
       <window_info anchor="bottom" id="Terminal" order="2" weight="0.3290461" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5078125" side_tool="true" weight="0.18219896" />
-      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.3211679" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.3211679" />
       <window_info anchor="bottom" x="22" y="397" width="1876" height="255" id="Logcat" order="5" weight="0.41021898" />
       <window_info anchor="bottom" id="Android Profiler" order="6" weight="0.32905483" />
       <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.64572865" weight="0.329927" />
@@ -642,6 +660,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/res/drawable-mdpi/menu_button.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -652,29 +677,28 @@
     <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/edit_images.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="59" column="42" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/src/main/res/drawable-mdpi/menu_button.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+        <state relative-caret-position="202">
+          <caret line="57" column="33" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/java/net/sajak/android/camera2basic/ImageEditor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="158" column="46" lean-forward="true" selection-start-line="158" selection-start-column="46" selection-end-line="158" selection-end-column="46" />
+        <state relative-caret-position="358">
+          <caret line="420" column="23" selection-start-line="420" selection-start-column="23" selection-end-line="420" selection-end-column="23" />
           <folding>
-            <element signature="e#10713#11055#0" expanded="true" />
-            <element signature="e#11054#11055#0" expanded="true" />
-            <element signature="e#11120#11462#0" expanded="true" />
-            <element signature="e#11461#11462#0" expanded="true" />
-            <element signature="e#14112#14326#0" expanded="true" />
-            <element signature="e#14325#14326#0" expanded="true" />
+            <element signature="e#10388#10730#0" expanded="true" />
+            <element signature="e#10729#10730#0" expanded="true" />
+            <element signature="e#10795#11137#0" expanded="true" />
+            <element signature="e#11136#11137#0" expanded="true" />
+            <element signature="e#13787#14001#0" expanded="true" />
+            <element signature="e#14000#14001#0" expanded="true" />
+            <element signature="e#14051#16156#0" expanded="true" />
+            <element signature="e#16155#16156#0" expanded="true" />
+            <element signature="e#16202#17724#0" expanded="true" />
+            <element signature="e#17723#17724#0" expanded="true" />
+            <element signature="e#17781#18097#0" expanded="true" />
+            <element signature="e#18096#18097#0" expanded="true" />
           </folding>
         </state>
       </provider>

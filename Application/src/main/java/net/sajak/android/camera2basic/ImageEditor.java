@@ -74,10 +74,11 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
     private RelativeLayout.LayoutParams v1params, v2params;
     private LinearLayout.LayoutParams v3params, v4params;
     private int height, width;
-    private boolean isHorizontalCrop = false;
+    private boolean isHorizontalCrop = true;
     Uri imageUri, imageUri2;
     int k = 0;
     boolean saved = false;
+    boolean switched = false;
 
     Matrix initialMatrix1, initialMatrix2, initialMatrix3, initialMatrix4;
     Matrix defaultMatrix1, defaultMatrix2, defaultMatrix3, defaultMatrix4;
@@ -129,13 +130,14 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         mergedView = (ImageView) findViewById(R.id.mergedImage);
 
         final Button saveMergedImage = findViewById(R.id.saveMergedImage);
-        Button toogleCropOrientation = findViewById(R.id.toggleCropOrientation);
+        Button toggleCropOrientation = findViewById(R.id.toggleCropOrientation);
+        Button switchImages = findViewById(R.id.switchImages);
         Button setChangesBack = findViewById(R.id.setChangesBack);
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        int width = size.x;
+        final int width = size.x;
 
 
         int actWidth1 = view1.getDrawable().getIntrinsicWidth();
@@ -268,7 +270,6 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         view3.setOnTouchListener(this);
         view4.setOnTouchListener(this);
 
-        //TODO: passt erst nach verschieben beider Bilder
         BitmapDrawable drawable = (BitmapDrawable) view1.getDrawable();
         bmapImageOne = drawable.getBitmap();
         BitmapDrawable drawable2 = (BitmapDrawable) view2.getDrawable();
@@ -355,11 +356,71 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             }
         });
 
-        toogleCropOrientation.setOnClickListener(new View.OnClickListener() {
+        toggleCropOrientation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 isHorizontalCrop = !isHorizontalCrop;
                 changeCropOrientation();
+            }
+        });
+
+        switchImages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("switch", "switch images");
+
+
+                if (isHorizontalCrop) {
+                    defaultMatrix1.postTranslate(0, -height/2);
+                    defaultMatrix2.postTranslate(0, height/2);
+
+                    Matrix tempDefaultMatrix = defaultMatrix1;
+                    defaultMatrix1 = defaultMatrix2;
+                    defaultMatrix2 = tempDefaultMatrix;
+
+                    matrix[0].set(defaultMatrix1);
+                    matrix[1].set(defaultMatrix2);
+
+                    view1.setImageMatrix(matrix[0]);
+                    view2.setImageMatrix(matrix[1]);
+
+                    if (!switched) {
+                        view1.setImageURI(imageUri2);
+                        view2.setImageURI(imageUri);
+                        switched = true;
+                    }
+                    else {
+                        view1.setImageURI(imageUri);
+                        view2.setImageURI(imageUri2);
+                        switched = false;
+                    }
+                }
+                else {
+                    /*defaultMatrix3.postTranslate(width/2, 0);
+                    defaultMatrix4.postTranslate(-width/2, 0);
+
+                    Matrix tempDefaultMatrix = defaultMatrix3;
+                    defaultMatrix3 = defaultMatrix4;
+                    defaultMatrix4 = tempDefaultMatrix;
+
+                    matrix[2].set(defaultMatrix4);
+                    matrix[3].set(defaultMatrix3);
+
+                    view3.setImageMatrix(matrix[3]);
+                    view4.setImageMatrix(matrix[2]);
+
+                    if (!switched) {
+                        view3.setImageURI(imageUri2);
+                        view4.setImageURI(imageUri);
+                        switched = true;
+                    }
+                    else {
+                        view3.setImageURI(imageUri);
+                        view4.setImageURI(imageUri2);
+                        switched = false;
+                    }*/
+                }
+
             }
         });
 

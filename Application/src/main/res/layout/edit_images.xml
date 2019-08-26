@@ -75,6 +75,13 @@
             android:layout_height="100dp"
             android:text="toggle"/>
 
+        <Button
+            android:id="@+id/switchImages"
+            android:layout_marginLeft="100dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="switch"/>
+
     </RelativeLayout>
 
 
