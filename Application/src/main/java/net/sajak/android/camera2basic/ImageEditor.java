@@ -26,6 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -130,8 +131,8 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
         mergedView = (ImageView) findViewById(R.id.mergedImage);
 
         final Button saveMergedImage = findViewById(R.id.saveMergedImage);
-        Button toggleCropOrientation = findViewById(R.id.toggleCropOrientation);
-        Button switchImages = findViewById(R.id.switchImages);
+        ImageButton toggleCropOrientation = findViewById(R.id.toggleCropOrientation);
+        ImageButton switchImages = findViewById(R.id.switchImages);
         Button setChangesBack = findViewById(R.id.setChangesBack);
 
         Display display = getWindowManager().getDefaultDisplay();
@@ -360,6 +361,16 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
             @Override
             public void onClick(View view) {
                 isHorizontalCrop = !isHorizontalCrop;
+
+                ImageButton button = (ImageButton) view.findViewById(R.id.toggleCropOrientation);
+                if (isHorizontalCrop) {
+                    button.setBackgroundResource(R.drawable.crophorizontal);
+                }
+                else {
+                    button.setBackgroundResource(R.drawable.cropvertical);
+                }
+
+
                 changeCropOrientation();
             }
         });
