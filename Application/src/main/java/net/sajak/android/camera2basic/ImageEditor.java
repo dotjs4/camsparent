@@ -396,18 +396,18 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                     }
                 }
                 else {
-                    /*defaultMatrix3.postTranslate(width/2, 0);
-                    defaultMatrix4.postTranslate(-width/2, 0);
+                    defaultMatrix3.postTranslate(-width/2, 0);
+                    defaultMatrix4.postTranslate(width/2, 0);
 
                     Matrix tempDefaultMatrix = defaultMatrix3;
                     defaultMatrix3 = defaultMatrix4;
                     defaultMatrix4 = tempDefaultMatrix;
 
-                    matrix[2].set(defaultMatrix4);
-                    matrix[3].set(defaultMatrix3);
+                    matrix[2].set(defaultMatrix3);
+                    matrix[3].set(defaultMatrix4);
 
-                    view3.setImageMatrix(matrix[3]);
-                    view4.setImageMatrix(matrix[2]);
+                    view3.setImageMatrix(matrix[2]);
+                    view4.setImageMatrix(matrix[3]);
 
                     if (!switched) {
                         view3.setImageURI(imageUri2);
@@ -418,7 +418,7 @@ public class ImageEditor extends AppCompatActivity implements View.OnTouchListen
                         view3.setImageURI(imageUri);
                         view4.setImageURI(imageUri2);
                         switched = false;
-                    }*/
+                    }
                 }
 
             }
