@@ -71,21 +71,21 @@
 
         <ImageButton
             android:id="@+id/toggleCropOrientation"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="100dp"
             android:layout_alignParentLeft="true"
             android:layout_marginTop="10dp"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/crophorizontal"
             />
 
         <ImageButton
             android:id="@+id/switchImages"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginRight="100dp"
             android:layout_alignParentRight="true"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/changesides"
             />
 
